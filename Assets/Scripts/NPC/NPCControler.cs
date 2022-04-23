@@ -25,6 +25,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
 
     [Header("Health")]
     public int maxHealth = 100;
+    public HealthBar healthSlider;
 
     [Header("Range Combat")]
     public Transform shootPoint;
@@ -62,6 +63,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
         player = GameManager.instance.playerCharacter.transform;
         npcType = npcTypeEnum == NPCTypeEnum.Melee ? true : false;
         currentHealth = maxHealth;
+        healthSlider.SetMaxSlidetValue(currentHealth);
     }
 
     // Update is called once per frame
@@ -145,23 +147,28 @@ public class NPCControler : MonoBehaviour, ICharacterController
 
     public void MeleeAttack(float damage)
     {
-        if (inAttack)
+        if (inAttack || !meleeAttack)
             return;
 
-        inAttack = false;
+        inAttack = true;
         StartCoroutine(ResetIsInAttackAsync(meleeAttackLenght));
+        StartCoroutine(Melee(damage));
+    }
 
+    IEnumerator Melee(float damage)
+    {
+        yield return null;
+        animator.SetBool("MeleeAttack", false);
+        yield return new WaitForSeconds(1f);
+        meleeAttack = false;
         Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemiesLayers);
 
         if (enemies.Length > 0)
         {
-            foreach (Collider2D enemy in enemies)
-            {
-                enemy.GetComponent<CharacterControler>().TakeDamage(damage);
-            }
+            enemies[0].GetComponent<CharacterControler>().TakeDamage(damage);
         }
 
-        Debug.Log("Melee");
+        yield return new WaitForSeconds(1.5f);
     }
 
     void OnDrawGizmosSelected()
@@ -179,8 +186,8 @@ public class NPCControler : MonoBehaviour, ICharacterController
         animator.SetBool("RangeAttack", true);
         if (firePrefab != null)
         {
-            PrefabRangeAttack();
             rangeAttack = true;
+            PrefabRangeAttack();
         }
         else
         {
@@ -188,22 +195,32 @@ public class NPCControler : MonoBehaviour, ICharacterController
             StartCoroutine(ShootCastAsynch(1.25f));
         }
 
-        StartCoroutine(ResetIsInAttackAsync(rangeAttackLenght));
-
-        //Instantiate(firePrefab, shootPoint.position, shootPoint.rotation);        
+        StartCoroutine(ResetIsInAttackAsync(rangeAttackLenght));       
     }
 
     void PrefabRangeAttack()
     {
-        StartCoroutine(ShootAsync(1.2f));
+        StartCoroutine(ShootAsync(0.52f));
     }
 
     private IEnumerator ShootAsync(float time)
     {
+        yield return null;
+        animator.SetBool("RangeAttack", false);
         yield return new WaitForSeconds(time);
-
         var bullet = Instantiate(firePrefab, shootPoint.position, shootPoint.rotation).GetComponent<Bullet>();
-        bullet.Shoot((transform.localScale.x < 0) ? transform.right : -transform.right);
+        var explosionPosition = bullet.Granade((transform.localScale.x < 0) ? -transform.right : transform.right, rangeHitEffect, player.position);
+        yield return new WaitForSeconds(1.6f);
+
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(explosionPosition, 2, enemiesLayers);
+
+        if (enemies.Length > 0)
+        {
+            enemies[0].GetComponent<CharacterControler>().TakeDamage(rangeAttackDamage);
+        }
+
+        yield return new WaitForSeconds(Random.Range(1, 5));
+        rangeAttack = false;
     }
 
     IEnumerator ShootCastAsynch(float circleCastWait)
@@ -246,6 +263,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        healthSlider.SetMaxSlidetValue(currentHealth);
 
         if (currentHealth <= 0)
         {

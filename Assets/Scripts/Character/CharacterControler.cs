@@ -27,6 +27,9 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     public GameObject frisbeePrafab;
     public bool hasFrisbee = true;
 
+    [Header("Health Bar")]
+    public HealthBar healthSlider;
+
     private Vector2 movement;
     private bool rangeAttack = false;
     private bool radioAttack = false;
@@ -43,6 +46,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
+        healthSlider.SetMaxSlidetValue(currentHealth);
     }
 
     void Update()
@@ -190,6 +194,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        healthSlider.SetSliderValue(currentHealth);
 
         if (currentHealth <= 0)
         {
