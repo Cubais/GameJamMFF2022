@@ -116,12 +116,12 @@ public class NPCControler : MonoBehaviour, ICharacterController
             {
                 isWalking = true;
 
-                var newPostOffset = (transform.position - player.position).normalized * maxSpeed;
+                newPost = (transform.position - player.position).normalized * maxSpeed;
 
-                transform.position = Vector2.MoveTowards(transform.position, newPostOffset, maxSpeed * Time.fixedDeltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, newPost, maxSpeed * Time.fixedDeltaTime);
 
             }
-            else if (Mathf.Abs(transform.position.y - player.position.y) > 0.05f)
+            else if (Mathf.Abs(transform.position.y - player.position.y) > 1f)
             {
 
                 newPost = new Vector2(transform.position.x, player.position.y + Random.Range(-0.2f, 0.2f));
@@ -138,7 +138,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
 
         var localScale = transform.localScale;
         if (isWalking)
-            localScale.x = (transform.position.x < newPost.x) ? transform.localScale.y : -transform.localScale.y;
+            localScale.x = (transform.position.x < GameManager.instance.playerCharacter.transform.position.x) ? transform.localScale.y : -transform.localScale.y;
 
         transform.localScale = localScale;
     }
@@ -166,7 +166,8 @@ public class NPCControler : MonoBehaviour, ICharacterController
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        if (attackPoint)
+            Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
     public void RangeAttack(float damage)

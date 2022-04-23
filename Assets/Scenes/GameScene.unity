@@ -508,8 +508,12 @@ PrefabInstance:
       value: Photographer
       objectReference: {fileID: 0}
     - target: {fileID: 5059524270950919267, guid: f0b13e33ceb914c44b95095ccb346d7f, type: 3}
-      propertyPath: npcTypeEnum
-      value: 0
+      propertyPath: meleeDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5059524270950919267, guid: f0b13e33ceb914c44b95095ccb346d7f, type: 3}
+      propertyPath: rangeDistance
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0b13e33ceb914c44b95095ccb346d7f, type: 3}
@@ -581,10 +585,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 952206660398723267, guid: dbc2e6398f3c5ba49bf0a2b65f1f8460, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 1591067095805655619, guid: dbc2e6398f3c5ba49bf0a2b65f1f8460, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -628,6 +628,18 @@ PrefabInstance:
     - target: {fileID: 1591067095805655619, guid: dbc2e6398f3c5ba49bf0a2b65f1f8460, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962472641528710952, guid: dbc2e6398f3c5ba49bf0a2b65f1f8460, type: 3}
+      propertyPath: maxSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962472641528710952, guid: dbc2e6398f3c5ba49bf0a2b65f1f8460, type: 3}
+      propertyPath: meleeAttackLenght
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962472641528710952, guid: dbc2e6398f3c5ba49bf0a2b65f1f8460, type: 3}
+      propertyPath: rangeAttackLenght
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6222522273891168219, guid: dbc2e6398f3c5ba49bf0a2b65f1f8460, type: 3}
       propertyPath: m_Name
