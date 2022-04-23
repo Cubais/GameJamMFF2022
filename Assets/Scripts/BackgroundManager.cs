@@ -48,8 +48,8 @@ public class BackgroundManager : Singleton<BackgroundManager>
         var width = spriteRenderer.sprite.bounds.size.x;
         var height = spriteRenderer.sprite.bounds.size.y;
 
-        topBorder.size = new Vector2(width, height / 4f);
-        topBorder.transform.position = new Vector2(0f, height / 2f - topBorder.size.y);
+        topBorder.size = new Vector2(width, height / 2f);
+        topBorder.transform.position = new Vector2(0f, 2 * topBorder.size.y / 4f);
 
         leftBorder.size = new Vector2(10f, height);
         leftBorder.transform.position = new Vector2(-width / 2f - 4f, 0f);

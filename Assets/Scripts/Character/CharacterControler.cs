@@ -7,7 +7,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     public const float PUNCH_ANIM_LENGHT = 0.5f;
     public const float THROW_ANIM_LENGHT = 0.8f;
     public const float THROW_OFFSET_ANIM_LENGHT = 0.7f;
-    public const float RADIO_ANIM_LENGHT = 1.3f;
+    public const float RADIO_ANIM_LENGHT = 1.1f;
 
     [Header("Character Controler Params")]
     public float maxSpeed = 5f;
@@ -59,6 +59,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
         
         meleeAttack = Input.GetMouseButtonDown(0);
         rangeAttack = Input.GetMouseButtonDown(1);
+        radioAttack = Input.GetKeyDown(KeyCode.Space);
 
         if (rangeAttack)
         {
@@ -70,6 +71,11 @@ public class CharacterControler : MonoBehaviour, ICharacterController
 
         if (meleeAttack)
             MeleeAttack(meleeAttackDamage);
+
+        if (radioAttack && !inAttack)
+        {            
+            StartCoroutine(PerformRadioAttackAsync(RADIO_ANIM_LENGHT));
+        }
 
         UpdateAnimator();
     }
@@ -84,7 +90,30 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     {
         animator.SetBool("Walking", movement != Vector2.zero && !inAttack);
         animator.SetBool("MeleeAttack", meleeAttack);
-        animator.SetBool("RangeAttack", rangeAttack);
+        animator.SetBool("RangeAttack", rangeAttack);        
+    }
+
+    private IEnumerator PerformRadioAttackAsync(float totalTime)
+    {
+        var time = 0f;
+        var currentTime = Time.realtimeSinceStartup;
+        animator.SetBool("RadioAttack", true);
+        inAttack = true;
+
+        while (Input.GetKey(KeyCode.Space) && time < totalTime)
+        {
+            time += (Time.realtimeSinceStartup - currentTime);
+            currentTime = Time.realtimeSinceStartup;            
+            yield return null;
+        }
+
+        if (time >= totalTime)
+        {
+            RadioAttack();
+        }
+
+        animator.SetBool("RadioAttack", false);
+        inAttack = false;
     }
 
     private IEnumerator ResetIsInAttackAsync(float time)
@@ -105,6 +134,11 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     public void Move(bool follow)
     {
         rb.MovePosition(rb.position + movement * maxSpeed * Time.fixedDeltaTime);
+    }
+
+    public void RadioAttack()
+    {   
+        
     }
 
     public void MeleeAttack(float damage)
