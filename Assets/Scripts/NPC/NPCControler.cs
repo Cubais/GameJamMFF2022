@@ -53,10 +53,12 @@ public class NPCControler : MonoBehaviour, ICharacterController
     private bool inAttack = false;
     private bool isWalking = false;
     private bool movingRight = false;
+    private Rigidbody2D rigidbody;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        rigidbody = transform.GetComponent<Rigidbody2D>();
         player = GameManager.instance.playerCharacter.transform;
         npcType = npcTypeEnum == NPCTypeEnum.Melee ? true : false;
         currentHealth = maxHealth;
@@ -66,7 +68,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
     void Update()
     {
         oldPost = transform.position;
-
+        rigidbody.velocity = Vector2.zero;
         UpdateAnimator();
     }
 
@@ -109,58 +111,28 @@ public class NPCControler : MonoBehaviour, ICharacterController
         }
         else
         {
+            
             if (Vector2.Distance(transform.position, player.position) < rangeDistance)
             {
                 isWalking = true;
-                if (player.position.y > transform.position.y)
-                {
-                    if (oldPost.y != newPost.y)
-                    {
-                        newPost.y -= rangeRunAmount;
-                    }
-                    else
-                    {
-                        newPost.y += rangeRunAmount;
-                    }
-                }
-                else
-                {
-                    if (oldPost.y != newPost.y)
-                    {
-                        newPost.y += rangeRunAmount;
-                    }
-                    else
-                    {
-                        newPost.y -= rangeRunAmount;
-                    }
-                }
 
-                newPost.x *= -1;
+                var newPostOffset = (transform.position - player.position).normalized * maxSpeed;
 
+                transform.position = Vector2.MoveTowards(transform.position, newPostOffset, maxSpeed * Time.fixedDeltaTime);
+
+            }
+            else if (Mathf.Abs(transform.position.y - player.position.y) > 0.05f)
+            {
+
+                newPost = new Vector2(transform.position.x, player.position.y + Random.Range(-0.2f, 0.2f));
+
+                isWalking = true;
                 transform.position = Vector2.MoveTowards(transform.position, newPost, maxSpeed * Time.fixedDeltaTime);
-
             }
             else
             {
                 isWalking = false;
                 RangeAttack(rangeAttackDamage);
-            }
-
-            if (Mathf.Abs(transform.position.y - player.position.y) > 0.05f)
-            {
-
-                newPost = player.position;
-                if (transform.position.y - player.position.y > 0)
-                {
-                    newPost.y -= rangeRunAmount;
-                }
-                else
-                {
-                    newPost.y += rangeRunAmount;
-                }
-
-                isWalking = true;
-                transform.position = Vector2.MoveTowards(transform.position, newPost, maxSpeed * Time.fixedDeltaTime);
             }
         }
 
@@ -206,7 +178,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
         animator.SetBool("RangeAttack", true);
         if (firePrefab != null)
         {
-            PrefabRangeAttack(damage);
+            PrefabRangeAttack();
             rangeAttack = true;
         }
         else
@@ -220,9 +192,17 @@ public class NPCControler : MonoBehaviour, ICharacterController
         //Instantiate(firePrefab, shootPoint.position, shootPoint.rotation);        
     }
 
-    void PrefabRangeAttack(float damage)
+    void PrefabRangeAttack()
     {
-        
+        StartCoroutine(ShootAsync(1.2f));
+    }
+
+    private IEnumerator ShootAsync(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        var bullet = Instantiate(firePrefab, shootPoint.position, shootPoint.rotation).GetComponent<Bullet>();
+        bullet.Shoot((transform.localScale.x < 0) ? transform.right : -transform.right);
     }
 
     IEnumerator ShootCastAsynch(float circleCastWait)

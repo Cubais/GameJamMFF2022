@@ -351,6 +351,7 @@ GameObject:
   - component: {fileID: 6939995594817352970}
   - component: {fileID: 8306788351965338084}
   - component: {fileID: 5059524270950919267}
+  - component: {fileID: 5399165561988755217}
   m_Layer: 7
   m_Name: Photographer
   m_TagString: Untagged
@@ -411,8 +412,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: -0.2042369, y: -2.1921415}
+  m_Size: {x: 1.0718627, y: 4.186095}
   m_Direction: 0
 --- !u!50 &8306788351965338084
 Rigidbody2D:
@@ -465,6 +466,22 @@ MonoBehaviour:
     m_Bits: 64
   rangeAttackLenght: 2.05
   meleeAttackLenght: 1
+--- !u!58 &5399165561988755217
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3067899381707879307}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.27999997, y: 0.68078935}
+  serializedVersion: 2
+  m_Radius: 1.1807889
 --- !u!1 &3067899381727961299
 GameObject:
   m_ObjectHideFlags: 0
