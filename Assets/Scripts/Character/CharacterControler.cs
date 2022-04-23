@@ -25,6 +25,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     [Header("Range Combat")]
     public Transform shootPoint;
     public GameObject frisbeePrafab;
+    public bool hasFrisbee = true;
 
     private Vector2 movement;
     private bool rangeAttack = false;
@@ -60,7 +61,12 @@ public class CharacterControler : MonoBehaviour, ICharacterController
         rangeAttack = Input.GetMouseButtonDown(1);
 
         if (rangeAttack)
+        {
             RangeAttack(rangeAttackDamage);
+
+            if (hasFrisbee)
+                hasFrisbee = false;
+        }
 
         if (meleeAttack)
             MeleeAttack(meleeAttackDamage);
@@ -129,7 +135,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
 
     public void RangeAttack(float damage)
     {
-        if (inAttack)
+        if (inAttack || !hasFrisbee)
             return;
 
         inAttack = true;
