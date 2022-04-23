@@ -8,11 +8,10 @@ public class Bullet : MonoBehaviour
     public Rigidbody2D rigidbody;
     public float damage = 20f;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Shoot(Vector2 direction)
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        rigidbody.velocity = transform.right * speed;
+        rigidbody.velocity = direction * speed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

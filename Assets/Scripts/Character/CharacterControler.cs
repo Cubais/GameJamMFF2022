@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CharacterControler : MonoBehaviour, ICharacterController
 {
-    public static float PUNCH_ANIM_LENGHT = 0.5f;
-    public static float THROW_ANIM_LENGHT = 0.8f;
-    public static float RADIO_ANIM_LENGHT = 1.3f;
+    public const float PUNCH_ANIM_LENGHT = 0.5f;
+    public const float THROW_ANIM_LENGHT = 0.8f;
+    public const float THROW_OFFSET_ANIM_LENGHT = 0.7f;
+    public const float RADIO_ANIM_LENGHT = 1.3f;
 
     [Header("Character Controler Params")]
     public float maxSpeed = 5f;
@@ -80,11 +81,19 @@ public class CharacterControler : MonoBehaviour, ICharacterController
         animator.SetBool("RangeAttack", rangeAttack);
     }
 
-    private IEnumerator ResetIsInAttack(float time)
+    private IEnumerator ResetIsInAttackAsync(float time)
     {
         yield return new WaitForSeconds(time);
 
         inAttack = false;
+    }
+
+    private IEnumerator ThrowFrisbeeAsync(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        var bullet = Instantiate(frisbeePrafab, shootPoint.position, shootPoint.rotation).GetComponent<Bullet>();
+        bullet.Shoot((transform.localScale.x < 0) ? transform.right : -transform.right);
     }
 
     public void Move(bool follow)
@@ -98,7 +107,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
             return;
 
         inAttack = true;
-        StartCoroutine(ResetIsInAttack(PUNCH_ANIM_LENGHT));
+        StartCoroutine(ResetIsInAttackAsync(PUNCH_ANIM_LENGHT));
 
         Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemiesLayers);
 
@@ -124,9 +133,8 @@ public class CharacterControler : MonoBehaviour, ICharacterController
             return;
 
         inAttack = true;
-        StartCoroutine(ResetIsInAttack(THROW_ANIM_LENGHT));        
-        Instantiate(frisbeePrafab, shootPoint.position, shootPoint.rotation);
-        Debug.Log("Range");
+        StartCoroutine(ResetIsInAttackAsync(THROW_ANIM_LENGHT));
+        StartCoroutine(ThrowFrisbeeAsync(THROW_OFFSET_ANIM_LENGHT));
     }
 
     public void RadioAttack(float damage)
@@ -135,7 +143,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
             return;
 
         inAttack = true;
-        StartCoroutine(ResetIsInAttack(RADIO_ANIM_LENGHT));
+        StartCoroutine(ResetIsInAttackAsync(RADIO_ANIM_LENGHT));
         throw new System.NotImplementedException();
     }
 

@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 7332143772138025642}
   m_Father: {fileID: 2386007480564654049}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5771660104904709701
 SpriteRenderer:
@@ -117,7 +117,7 @@ Transform:
   - {fileID: 2492750928200647089}
   - {fileID: 7172090492862067501}
   m_Father: {fileID: 2386007480564654049}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2047393751777118369
 SpriteRenderer:
@@ -205,6 +205,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8280220363597939733}
+  - {fileID: 6986099594543817934}
   - {fileID: 430233001546411499}
   - {fileID: 6437635161563493435}
   - {fileID: 975335571015224030}
@@ -297,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5
-  meeleyAttackDamage: 5
+  meleeAttackDamage: 40
   rangeAttackDamage: 5
   attackPoint: {fileID: 8280220363597939733}
   attackRange: 0.5
@@ -305,6 +306,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   maxHealth: 100
+  shootPoint: {fileID: 6986099594543817934}
+  frisbeePrafab: {fileID: 3131399630508739073, guid: a0d87bd4debe60345af394c1f10b4e79, type: 3}
 --- !u!1 &3405934382935019998
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +424,7 @@ Transform:
   m_Children:
   - {fileID: 3606087497662263022}
   m_Father: {fileID: 2386007480564654049}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2178096949368424807
 SpriteRenderer:
@@ -500,8 +503,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4973888792597498413}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.2958369, y: -2.7191865, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.06, y: -3.26, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7110330937226983837}
@@ -547,7 +550,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -183348917
   m_SortingLayer: 1
-  m_SortingOrder: 20
+  m_SortingOrder: 11
   m_Sprite: {fileID: 2015728615504432258, guid: 40c01e8c8cc10224287e0e465101eeb6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -758,6 +761,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6202475948142974317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6986099594543817934}
+  m_Layer: 6
+  m_Name: ShootingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6986099594543817934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6202475948142974317}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.3, y: -4.47, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2386007480564654049}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7555905751411204928
 GameObject:
   m_ObjectHideFlags: 0
