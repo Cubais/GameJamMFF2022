@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class CharacterControler : MonoBehaviour, ICharacterController
 {
+    [Header("Character Controler Params")]
     public float maxSpeed = 5f;
-    public Rigidbody2D rigidbody;
     public float meeleyAttackDamage = 5f;
     public float rangeAttackDamage = 5f;
+
+    [Header("RigidBody")]
+    public Rigidbody2D rigidbody;
 
     Vector2 movement;
     bool rangeAttack = false;
@@ -41,7 +44,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
 
     void FixedUpdate()
     {
-        Move();
+        Move(false);
 
         if (rangeAttack)
             RangeAttack(rangeAttackDamage);
@@ -51,7 +54,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
 
     }
 
-    public void Move()
+    public void Move(bool follow)
     {
         rigidbody.MovePosition(rigidbody.position + movement * maxSpeed * Time.fixedDeltaTime);
     }

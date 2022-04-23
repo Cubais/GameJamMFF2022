@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface ICharacterController
 {
-    public void Move();
+    public void Move(bool follow);
     public void MeleeAttack(float damage);
     public void RangeAttack(float damage);
     public void RadioAttack(float damage);
