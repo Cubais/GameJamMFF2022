@@ -507,6 +507,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Photographer
       objectReference: {fileID: 0}
+    - target: {fileID: 5059524270950919267, guid: f0b13e33ceb914c44b95095ccb346d7f, type: 3}
+      propertyPath: npcTypeEnum
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0b13e33ceb914c44b95095ccb346d7f, type: 3}
 --- !u!1001 &7691041748292412028

@@ -1,0 +1,335 @@
+fileFormatVersion: 2
+guid: 7a22ca31affd0fd4cb2de6fc032c6a9a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3551269171566216696
+    second: SoldierGranade_0
+  - first:
+      213: 3787432809745083708
+    second: SoldierGranade_1
+  - first:
+      213: -3350659980075677102
+    second: SoldierGranade_2
+  - first:
+      213: -2486525968582502637
+    second: SoldierGranade_3
+  - first:
+      213: 8513912323384996290
+    second: SoldierGranade_4
+  - first:
+      213: -8142991473656179431
+    second: SoldierGranade_5
+  - first:
+      213: 3947052723151377577
+    second: SoldierGranade_6
+  - first:
+      213: -7614991303128410703
+    second: SoldierGranade_7
+  - first:
+      213: 4894361962299331200
+    second: SoldierGranade_8
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SoldierGranade_0
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 631
+        width: 248
+        height: 381
+      alignment: 9
+      pivot: {x: 0.58577704, y: 0.053328387}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f500010f74a84130800000000000000
+      internalID: 3551269171566216696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SoldierGranade_1
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 901
+        width: 205
+        height: 115
+      alignment: 9
+      pivot: {x: 0.108868256, y: 0.8415018}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3de383e21aaf8430800000000000000
+      internalID: 3787432809745083708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SoldierGranade_2
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 355
+        width: 131
+        height: 315
+      alignment: 9
+      pivot: {x: 0.52498245, y: 0.97792196}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25ac87c20801081d0800000000000000
+      internalID: -3350659980075677102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SoldierGranade_3
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 606
+        width: 143
+        height: 239
+      alignment: 9
+      pivot: {x: 0.24825132, y: 0.8560288}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3171bd54ec51e7dd0800000000000000
+      internalID: -2486525968582502637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SoldierGranade_4
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 589
+        width: 67
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c1fe24462e772670800000000000000
+      internalID: 8513912323384996290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SoldierGranade_5
+      rect:
+        serializedVersion: 2
+        x: 1611
+        y: 591
+        width: 244
+        height: 187
+      alignment: 9
+      pivot: {x: 0.30551398, y: 0.04496822}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91550bbe5684efe80800000000000000
+      internalID: -8142991473656179431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SoldierGranade_6
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 99
+        width: 147
+        height: 311
+      alignment: 9
+      pivot: {x: 0.4332097, y: 0.9472377}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a41d211a8fb6c630800000000000000
+      internalID: 3947052723151377577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SoldierGranade_7
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 99
+        width: 147
+        height: 311
+      alignment: 9
+      pivot: {x: 0.4332097, y: 0.9419761}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b5975971cd125690800000000000000
+      internalID: -7614991303128410703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SoldierGranade_8
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 170
+        width: 131
+        height: 315
+      alignment: 9
+      pivot: {x: 0.49999908, y: 0.94675314}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0821905f5444ce340800000000000000
+      internalID: 4894361962299331200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      SoldierGranade_1: 3787432809745083708
+      SoldierGranade_6: 3947052723151377577
+      SoldierGranade_2: -3350659980075677102
+      SoldierGranade_3: -2486525968582502637
+      SoldierGranade_4: 8513912323384996290
+      SoldierGranade_7: -7614991303128410703
+      SoldierGranade_0: 3551269171566216696
+      SoldierGranade_5: -8142991473656179431
+      SoldierGranade_8: 4894361962299331200
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
