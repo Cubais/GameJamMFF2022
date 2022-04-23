@@ -34,7 +34,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        player = GameManager.instance.playerCharacter.transform;
         npcType = npcTypeEnum == NPCTypeEnum.Melee ? true : false;
     }
 
@@ -46,17 +46,13 @@ public class NPCControler : MonoBehaviour, ICharacterController
 
     void FixedUpdate()
     {
-        
-            Move(npcType);
-        
+        Move(npcType);
 
-            if (rangeAttack)
-                RangeAttack(rangeAttackDamage);
+        if (rangeAttack)
+            RangeAttack(rangeAttackDamage);
 
-            if (meeleyAttack)
-                MeleeAttack(meeleyAttackDamage);
-        
-
+        if (meeleyAttack)
+            MeleeAttack(meeleyAttackDamage);
     }
 
     public void Move(bool follow)

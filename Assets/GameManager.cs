@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
 
     private AudioUnit currentAmbientMusic;
 
-    private void Start()
+    private void Awake()
     {
         BackgroundManager.instance.Init();
         AudioManager.instance.Prewarm(5);
