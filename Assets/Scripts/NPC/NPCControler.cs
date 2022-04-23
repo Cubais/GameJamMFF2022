@@ -67,12 +67,6 @@ public class NPCControler : MonoBehaviour, ICharacterController
     {
         oldPost = transform.position;
 
-        /*if (rangeAttack)
-            RangeAttack(rangeAttackDamage);*/
-
-        /*if (meleeAttack)
-            MeleeAttack(meleeAttackDamage);*/
-
         UpdateAnimator();
     }
 
@@ -253,7 +247,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
             if (player != null)
             {
                 player.TakeDamage(rangeAttackDamage);
-                Debug.Log("RANGE HIT");
+                ScreenManager.instance.FlashScreen();
 
                 if (rangeHitEffect)
                 {

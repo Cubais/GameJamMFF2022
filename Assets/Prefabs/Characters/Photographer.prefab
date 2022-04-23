@@ -453,7 +453,7 @@ MonoBehaviour:
   meleeDistance: 2
   rangeDistance: 5
   rangeRunAmount: 10
-  npcTypeEnum: 0
+  npcTypeEnum: 1
   maxHealth: 100
   shootPoint: {fileID: 270443337222814301}
   firePrefab: {fileID: 0}
