@@ -17,8 +17,10 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
+        BackgroundManager.instance.Init();
         AudioManager.instance.Prewarm(5);
         currentAmbientMusic = AudioManager.instance.Play(desertMusicAmbient, true);
-        //playerCharacter = Instantiate(PlayerPrefab, PlayerStartPos.position, Quaternion.identity);
+
+        playerCharacter = Instantiate(PlayerPrefab, PlayerStartPos.position, Quaternion.identity);
     }
 }
