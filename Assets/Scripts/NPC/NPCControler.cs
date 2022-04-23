@@ -26,6 +26,10 @@ public class NPCControler : MonoBehaviour, ICharacterController
     [Header("Health")]
     public int maxHealth = 100;
 
+    [Header("Range Combat")]
+    public Transform shootPoint;
+    public GameObject firePrefab;
+
     Vector2 movement;
     Vector2 oldPost;
     bool rangeAttack = false;
@@ -111,7 +115,8 @@ public class NPCControler : MonoBehaviour, ICharacterController
 
     public void RangeAttack(float damage)
     {
-        Debug.Log("RangeAttack");
+        Instantiate(firePrefab, shootPoint.position, shootPoint.rotation);
+        Debug.Log("Range");
     }
 
     public void RadioAttack(float damage)

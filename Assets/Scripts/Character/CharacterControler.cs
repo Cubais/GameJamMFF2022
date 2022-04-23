@@ -17,6 +17,10 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     [Header("Health")]
     public float maxHealth = 100;
 
+    [Header("Range Combat")]
+    public Transform shootPoint;
+    public GameObject frisbeePrafab;
+
     private Vector2 movement;
     private bool rangeAttack = false;
     private bool radioAttack = false;
@@ -47,7 +51,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
         meleeAttack = Input.GetMouseButtonDown(0);
         rangeAttack = Input.GetMouseButtonDown(1);        
 
-        UpdateAnimator();
+        //UpdateAnimator();
     }
 
     void FixedUpdate()
@@ -84,6 +88,8 @@ public class CharacterControler : MonoBehaviour, ICharacterController
                 enemy.GetComponent<NPCControler>().TakeDamage(damage);
             }
         }
+
+        Debug.Log("Melee");
     }
 
     void OnDrawGizmosSelected()
@@ -93,7 +99,8 @@ public class CharacterControler : MonoBehaviour, ICharacterController
 
     public void RangeAttack(float damage)
     {
-        Debug.Log("RangeAttack");
+        Instantiate(frisbeePrafab, shootPoint.position, shootPoint.rotation);
+        Debug.Log("Range");
     }
 
     public void RadioAttack(float damage)
