@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7352692a16b77443848bfc3dbe839f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 7181429169985519729, guid: cc7395202ba14aa4098cd05b5f577aee, type: 3}
+  PlayerPrefab: {fileID: 2963024566150082666, guid: 13859def70c272b4ba114d0e46a4d47b, type: 3}
   PlayerStartPos: {fileID: 0}
   desertMusicAmbient: {fileID: 8300000, guid: bfe2de76f13149a41a03d3c8754a28a9, type: 3}
 --- !u!1 &5145218361469355767
