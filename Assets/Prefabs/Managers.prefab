@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 2963024566150082666, guid: 13859def70c272b4ba114d0e46a4d47b, type: 3}
   PlayerStartPos: {fileID: 0}
-  desertMusicAmbient: {fileID: 8300000, guid: bfe2de76f13149a41a03d3c8754a28a9, type: 3}
+  desertMusicAmbient: {fileID: 8300000, guid: 476873e0155209d49a10022c5a18dfe7, type: 3}
 --- !u!1 &5145218361469355767
 GameObject:
   m_ObjectHideFlags: 0

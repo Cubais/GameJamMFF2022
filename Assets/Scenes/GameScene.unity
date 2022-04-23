@@ -556,6 +556,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8270915740757528656, guid: 52734765de1e7f04aa33ef100df1fbf0, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270915741102035867, guid: 52734765de1e7f04aa33ef100df1fbf0, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8270915741544289760, guid: 52734765de1e7f04aa33ef100df1fbf0, type: 3}
       propertyPath: m_Name
       value: MeleeNPC
@@ -602,6 +610,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8270915741544289771, guid: 52734765de1e7f04aa33ef100df1fbf0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270915742100582050, guid: 52734765de1e7f04aa33ef100df1fbf0, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270915742390627363, guid: 52734765de1e7f04aa33ef100df1fbf0, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

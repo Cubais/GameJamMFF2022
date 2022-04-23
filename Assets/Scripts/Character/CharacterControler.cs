@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class CharacterControler : MonoBehaviour, ICharacterController
 {
+    public static float PUNCH_ANIM_LENGHT = 0.5f;
+    public static float THROW_ANIM_LENGHT = 0.8f;
+    public static float RADIO_ANIM_LENGHT = 1.3f;
+
     [Header("Character Controler Params")]
     public float maxSpeed = 5f;
-    public float meeleyAttackDamage = 40f;
+    public float meleeAttackDamage = 40f;
     public float rangeAttackDamage = 5f;
 
     [Header("Melee Combat")]
@@ -27,6 +31,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     private bool meleeAttack = false;
 
     private float currentHealth;
+    private bool inAttack;
 
     private Animator animator;
     private Rigidbody2D rb;
@@ -45,31 +50,41 @@ public class CharacterControler : MonoBehaviour, ICharacterController
 
         // Flipping character
         var localScale = transform.localScale;
-        localScale.x = (movement.x < 0f) ? transform.localScale.y : -transform.localScale.y;
+        if (movement.x != 0f)
+            localScale.x = (movement.x < 0f) ? transform.localScale.y : -transform.localScale.y;
+
         transform.localScale = localScale;
         
         meleeAttack = Input.GetMouseButtonDown(0);
-        rangeAttack = Input.GetMouseButtonDown(1);        
-
-        //UpdateAnimator();
-    }
-
-    void FixedUpdate()
-    {
-        Move(false);
+        rangeAttack = Input.GetMouseButtonDown(1);
 
         if (rangeAttack)
             RangeAttack(rangeAttackDamage);
 
         if (meleeAttack)
-            MeleeAttack(meeleyAttackDamage);
+            MeleeAttack(meleeAttackDamage);
+
+        UpdateAnimator();
+    }
+
+    void FixedUpdate()
+    {
+        if (!inAttack)
+            Move(false);
     }
 
     private void UpdateAnimator()
     {
-        animator.SetBool("Walking", movement != Vector2.zero);
+        animator.SetBool("Walking", movement != Vector2.zero && !inAttack);
         animator.SetBool("MeleeAttack", meleeAttack);
         animator.SetBool("RangeAttack", rangeAttack);
+    }
+
+    private IEnumerator ResetIsInAttack(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        inAttack = false;
     }
 
     public void Move(bool follow)
@@ -79,6 +94,12 @@ public class CharacterControler : MonoBehaviour, ICharacterController
 
     public void MeleeAttack(float damage)
     {
+        if (inAttack)
+            return;
+
+        inAttack = true;
+        StartCoroutine(ResetIsInAttack(PUNCH_ANIM_LENGHT));
+
         Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemiesLayers);
 
         if (enemies.Length > 0)
@@ -99,12 +120,22 @@ public class CharacterControler : MonoBehaviour, ICharacterController
 
     public void RangeAttack(float damage)
     {
+        if (inAttack)
+            return;
+
+        inAttack = true;
+        StartCoroutine(ResetIsInAttack(THROW_ANIM_LENGHT));        
         Instantiate(frisbeePrafab, shootPoint.position, shootPoint.rotation);
         Debug.Log("Range");
     }
 
     public void RadioAttack(float damage)
     {
+        if (inAttack)
+            return;
+
+        inAttack = true;
+        StartCoroutine(ResetIsInAttack(RADIO_ANIM_LENGHT));
         throw new System.NotImplementedException();
     }
 

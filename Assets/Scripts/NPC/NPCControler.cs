@@ -36,7 +36,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
     bool radioAttack = false;
     bool meeleyAttack = false;
     bool npcType = false;
-    float currentHealth;
+    public float currentHealth;
 
     Transform player;
 
