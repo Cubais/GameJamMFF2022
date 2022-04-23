@@ -199,6 +199,6 @@ public class CharacterControler : MonoBehaviour, ICharacterController
 
     public void Die()
     {
-        Debug.Log("DEAD");
+        Debug.Log("PLAYER DEAD");
     }
 }
