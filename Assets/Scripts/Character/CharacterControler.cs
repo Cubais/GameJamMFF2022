@@ -6,13 +6,23 @@ public class CharacterControler : MonoBehaviour, ICharacterController
 {
     [Header("Character Controler Params")]
     public float maxSpeed = 5f;
-    public float meeleyAttackDamage = 5f;
+    public float meeleyAttackDamage = 40f;
     public float rangeAttackDamage = 5f;
+
+    [Header("Melee Combat")]
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemiesLayers;
+
+    [Header("Health")]
+    public float maxHealth = 100;
 
     private Vector2 movement;
     private bool rangeAttack = false;
     private bool radioAttack = false;
     private bool meleeAttack = false;
+
+    private float currentHealth;
 
     private Animator animator;
     private Rigidbody2D rb;
@@ -21,9 +31,9 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
@@ -65,7 +75,20 @@ public class CharacterControler : MonoBehaviour, ICharacterController
 
     public void MeleeAttack(float damage)
     {
-        Debug.Log("MeeleyAttack");
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemiesLayers);
+
+        if (enemies.Length > 0)
+        {
+            foreach (Collider2D enemy in enemies)
+            {
+                enemy.GetComponent<NPCControler>().TakeDamage(damage);
+            }
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
     public void RangeAttack(float damage)
@@ -76,5 +99,20 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     public void RadioAttack(float damage)
     {
         throw new System.NotImplementedException();
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Debug.Log("DEAD");
     }
 }

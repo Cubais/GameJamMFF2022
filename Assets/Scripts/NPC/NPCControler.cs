@@ -23,19 +23,24 @@ public class NPCControler : MonoBehaviour, ICharacterController
     [Header("Type of NPC")]
     public NPCTypeEnum npcTypeEnum;
 
+    [Header("Health")]
+    public int maxHealth = 100;
+
     Vector2 movement;
     Vector2 oldPost;
     bool rangeAttack = false;
     bool radioAttack = false;
     bool meeleyAttack = false;
-    bool npcType = false; 
+    bool npcType = false;
+    float currentHealth;
 
     Transform player;
 
     void Start()
     {
-        player = GameManager.instance.playerCharacter.transform;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         npcType = npcTypeEnum == NPCTypeEnum.Melee ? true : false;
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -112,5 +117,20 @@ public class NPCControler : MonoBehaviour, ICharacterController
     public void RadioAttack(float damage)
     {
         throw new System.NotImplementedException();
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Debug.Log("DEAD");
     }
 }

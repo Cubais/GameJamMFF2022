@@ -8,4 +8,6 @@ public interface ICharacterController
     public void MeleeAttack(float damage);
     public void RangeAttack(float damage);
     public void RadioAttack(float damage);
+    public void TakeDamage(float damage);
+    public void Die();
 }
