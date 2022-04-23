@@ -63,7 +63,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
         player = GameManager.instance.playerCharacter.transform;
         npcType = npcTypeEnum == NPCTypeEnum.Melee ? true : false;
         currentHealth = maxHealth;
-        healthSlider.SetMaxSlidetValue(currentHealth);
+        healthSlider.SetMaxSliderValue(currentHealth);
     }
 
     // Update is called once per frame
@@ -263,7 +263,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        healthSlider.SetMaxSlidetValue(currentHealth);
+        healthSlider.SetSliderValue(currentHealth);
 
         if (currentHealth <= 0)
         {

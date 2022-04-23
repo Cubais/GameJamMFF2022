@@ -46,7 +46,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
-        healthSlider.SetMaxSlidetValue(currentHealth);
+        healthSlider.SetMaxSliderValue(currentHealth);
     }
 
     void Update()
@@ -94,7 +94,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     {
         animator.SetBool("Walking", movement != Vector2.zero && !inAttack);
         animator.SetBool("MeleeAttack", meleeAttack);
-        animator.SetBool("RangeAttack", rangeAttack);        
+          
     }
 
     private IEnumerator PerformRadioAttackAsync(float totalTime)
@@ -131,6 +131,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     {
         yield return new WaitForSeconds(time);
 
+        animator.SetBool("RangeAttack", false);
         var bullet = Instantiate(frisbeePrafab, shootPoint.position, shootPoint.rotation).GetComponent<Bullet>();
         bullet.Shoot((transform.localScale.x < 0) ? transform.right : -transform.right);
     }
@@ -162,8 +163,6 @@ public class CharacterControler : MonoBehaviour, ICharacterController
                 enemy.GetComponent<NPCControler>().TakeDamage(damage);
             }
         }
-
-        Debug.Log("Melee");
     }
 
     void OnDrawGizmosSelected()
@@ -177,6 +176,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
             return;
 
         inAttack = true;
+        animator.SetBool("RangeAttack", true);
         StartCoroutine(ResetIsInAttackAsync(THROW_ANIM_LENGHT));
         StartCoroutine(ThrowFrisbeeAsync(THROW_OFFSET_ANIM_LENGHT));
     }
