@@ -1,0 +1,360 @@
+fileFormatVersion: 2
+guid: 4cc649eb86bd98a448207ab596ba0fe6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1334869566902204416
+    second: Reporter_0
+  - first:
+      213: 2519271889274404648
+    second: Reporter_1
+  - first:
+      213: 9160243528973060264
+    second: Reporter_2
+  - first:
+      213: -1836763734847251496
+    second: Reporter_3
+  - first:
+      213: -6808645570254529886
+    second: Reporter_4
+  - first:
+      213: 3116187920980255841
+    second: Reporter_5
+  - first:
+      213: -3241310911504951383
+    second: Reporter_6
+  - first:
+      213: 5677407180843564235
+    second: Reporter_7
+  - first:
+      213: -6392999145375437698
+    second: Reporter_8
+  - first:
+      213: -3074606011297579816
+    second: Reporter_9
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Reporter_0
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 682
+        width: 135
+        height: 279
+      alignment: 9
+      pivot: {x: 0.51120335, y: 0.38886768}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 008805b8337997de0800000000000000
+      internalID: -1334869566902204416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reporter_1
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 718
+        width: 151
+        height: 243
+      alignment: 9
+      pivot: {x: 0.5294881, y: 0.59162056}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82ff3d48f6046f220800000000000000
+      internalID: 2519271889274404648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reporter_2
+      rect:
+        serializedVersion: 2
+        x: 1141
+        y: 840
+        width: 97
+        height: 182
+      alignment: 9
+      pivot: {x: 0.24268334, y: 0.8359982}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a88280e4f8bf1f70800000000000000
+      internalID: 9160243528973060264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reporter_3
+      rect:
+        serializedVersion: 2
+        x: 1471
+        y: 756
+        width: 114
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8db1c106d118286e0800000000000000
+      internalID: -1836763734847251496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reporter_4
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 199
+        width: 134
+        height: 339
+      alignment: 9
+      pivot: {x: 0.49440366, y: 0.23897883}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aa11777de4d281a0800000000000000
+      internalID: -6808645570254529886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reporter_5
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 404
+        width: 139
+        height: 167
+      alignment: 9
+      pivot: {x: 0.068412505, y: 0.10934247}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1642463676cee3b20800000000000000
+      internalID: 3116187920980255841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reporter_6
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 351
+        width: 114
+        height: 220
+      alignment: 9
+      pivot: {x: 0.46053168, y: 0.89539266}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a7562136ec8403d0800000000000000
+      internalID: -3241310911504951383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reporter_7
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 349
+        width: 112
+        height: 221
+      alignment: 9
+      pivot: {x: 0.47321755, y: 0.8732449}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bccbe6330c33ace40800000000000000
+      internalID: 5677407180843564235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reporter_8
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 99
+        width: 101
+        height: 270
+      alignment: 9
+      pivot: {x: 0.53712267, y: 0.86660945}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7c658a16218747a0800000000000000
+      internalID: -6392999145375437698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reporter_9
+      rect:
+        serializedVersion: 2
+        x: 1371
+        y: 99
+        width: 100
+        height: 270
+      alignment: 9
+      pivot: {x: 0.6049829, y: 0.87216413}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dcb3586f1ec455d0800000000000000
+      internalID: -3074606011297579816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Reporter_1: 2519271889274404648
+      Reporter_2: 9160243528973060264
+      Reporter_5: 3116187920980255841
+      Reporter_7: 5677407180843564235
+      Reporter_8: -6392999145375437698
+      Reporter_0: -1334869566902204416
+      Reporter_3: -1836763734847251496
+      Reporter_6: -3241310911504951383
+      Reporter_4: -6808645570254529886
+      Reporter_9: -3074606011297579816
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
