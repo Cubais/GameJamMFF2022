@@ -12,7 +12,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
 {
     [Header("Character Controler Params")]
     public float maxSpeed = 5f;
-    public float meeleyAttackDamage = 5f;
+    public float meleeAttackDamage = 5f;
     public float rangeAttackDamage = 5f;
 
     [Header("Distances Params")]
@@ -30,19 +30,28 @@ public class NPCControler : MonoBehaviour, ICharacterController
     public Transform shootPoint;
     public GameObject firePrefab;
 
-    Vector2 movement;
-    Vector2 oldPost;
-    bool rangeAttack = false;
-    bool radioAttack = false;
-    bool meeleyAttack = false;
-    bool npcType = false;
-    public float currentHealth;
+    [Header("Animations length")]
+    [SerializeField] private float rangeAttackLenght;
+    [SerializeField] private float meleeAttackLenght;
 
-    Transform player;
+    private Vector2 movement;
+    private Vector2 oldPost;
+    private bool rangeAttack = false;
+    private bool radioAttack = false;
+    private bool meleeAttack = false;
+    private bool npcType = false;
+    private float currentHealth;
+
+    private Transform player;
+    private Animator animator;
+    private bool inAttack = false;
+    private bool isWalking = false;
+    private bool movingRight = false;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        animator = GetComponent<Animator>();
+        player = GameManager.instance.playerCharacter.transform;
         npcType = npcTypeEnum == NPCTypeEnum.Melee ? true : false;
         currentHealth = maxHealth;
     }
@@ -51,33 +60,56 @@ public class NPCControler : MonoBehaviour, ICharacterController
     void Update()
     {
         oldPost = transform.position;
-    }
-
-    void FixedUpdate()
-    {
-        Move(npcType);
 
         if (rangeAttack)
             RangeAttack(rangeAttackDamage);
 
-        if (meeleyAttack)
-            MeleeAttack(meeleyAttackDamage);
+        if (meleeAttack)
+            MeleeAttack(meleeAttackDamage);
+
+        UpdateAnimator();
+    }
+
+    void FixedUpdate()
+    {
+        if (!inAttack)
+            Move(npcType);
+    }
+
+    private void UpdateAnimator()
+    {
+        animator.SetBool("Walking", isWalking && !inAttack);
+        animator.SetBool("MeleeAttack", meleeAttack);
+        animator.SetBool("RangeAttack", rangeAttack);
+    }
+
+    private IEnumerator ResetIsInAttackAsync(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        inAttack = false;
     }
 
     public void Move(bool follow)
-    {   
+    {
+        Vector2 newPost = player.position;
         if (follow)
         {
             if (Vector2.Distance(transform.position, player.position) > meleeDistance)
             {
-                transform.position = Vector2.MoveTowards(transform.position, player.position, maxSpeed * Time.fixedDeltaTime);
+                isWalking = true;
+                transform.position = Vector2.MoveTowards(transform.position, newPost, maxSpeed * Time.fixedDeltaTime);
+            }
+            else
+            {
+                isWalking = false;
             }
         }
         else
-        {
-            Vector2 newPost = player.position;
+        {            
             if (Vector2.Distance(transform.position, player.position) < rangeDistance)
             {
+                isWalking = true;
                 if (player.position.y > transform.position.y)
                 {
                     if (oldPost.y != newPost.y)
@@ -104,19 +136,39 @@ public class NPCControler : MonoBehaviour, ICharacterController
                 newPost.x *= -1;
 
                 transform.position = Vector2.MoveTowards(transform.position, newPost, maxSpeed * Time.fixedDeltaTime);
+
+            }
+            else
+            {
+                isWalking = false;
             }
         }
+
+        var localScale = transform.localScale;
+        if (isWalking)
+            localScale.x = (transform.position.x < newPost.x) ? transform.localScale.y : -transform.localScale.y;
+
+        transform.localScale = localScale;
     }
 
     public void MeleeAttack(float damage)
     {
-        Debug.Log("MeeleyAttack");
+        if (inAttack)
+            return;
+
+        inAttack = false;
+        StartCoroutine(ResetIsInAttackAsync(meleeAttackLenght));
     }
 
     public void RangeAttack(float damage)
     {
-        Instantiate(firePrefab, shootPoint.position, shootPoint.rotation);
-        Debug.Log("Range");
+        if (inAttack)
+            return;
+
+        inAttack = false;
+        StartCoroutine(ResetIsInAttackAsync(rangeAttackLenght));
+
+        Instantiate(firePrefab, shootPoint.position, shootPoint.rotation);        
     }
 
     public void RadioAttack(float damage)

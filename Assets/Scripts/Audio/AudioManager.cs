@@ -29,6 +29,14 @@ public class AudioManager : Singleton<AudioManager>
         LoadSoundDatabase();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            AudioListener.volume = (AudioListener.volume == 1f) ? 0f : 1f;
+        }   
+    }
+
     public void Prewarm(int count)
     {
         for (int i = 0; i < count; i++)
