@@ -28,6 +28,7 @@ public class AudioUnit : MonoBehaviour
 
     public void Play(AudioClip soundToPlay, bool loop = false)
     {
+        source.volume = 1.0f;
         source.clip = soundToPlay;
         source.loop = loop;
 
@@ -55,9 +56,10 @@ public class AudioUnit : MonoBehaviour
     {
         while(source.volume > 0.0f)
         {
-            source.volume -= 0.001f;
+            source.volume -= 0.005f;
             yield return null;
         }
+        source.Stop();
 
         OnSoundFinished(this);
     }

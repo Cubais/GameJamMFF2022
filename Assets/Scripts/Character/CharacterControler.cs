@@ -192,9 +192,9 @@ public class CharacterControler : MonoBehaviour, ICharacterController
             foreach (Collider2D enemy in enemies)
             {
                 if (enemy.gameObject.tag == "Boss")
-                    enemy.GetComponent<BossControler>().TakeDamage(radioAttackDamage);
+                    enemy.GetComponent<BossControler>().TakeDamage(meleeAttackDamage);
                 else
-                    enemy.GetComponent<NPCControler>().TakeDamage(radioAttackDamage);
+                    enemy.GetComponent<NPCControler>().TakeDamage(meleeAttackDamage);
 
                 StartCoroutine(EffectsAsynch());                
                 radioCharger += 5;
@@ -228,6 +228,21 @@ public class CharacterControler : MonoBehaviour, ICharacterController
         StartCoroutine(ThrowFrisbeeAsync(THROW_OFFSET_ANIM_LENGHT));
     }
 
+    internal void GainHP(bool fullHealth)
+    {
+        if (fullHealth)
+        {
+            currentHealth = 100f;
+            radioCharger = 100f;            
+        }
+        else
+        {
+            currentHealth = Mathf.Clamp(currentHealth + 50f, 0f, 100f);
+        }
+
+        ScreenManager.instance.SetCharacterHealth(currentHealth, radioCharger);
+    }
+
     public void RadioAttack(float damage)
     {
         if (inAttack)
@@ -253,6 +268,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
         Transform point = deathPoint;
         point.parent = deathPoint.parent.parent;
         Instantiate(deathEffect, point);
+        ScreenManager.instance.SetScreen(ScreenType.Dead);
         StartCoroutine(DieAsynch());
     }
 

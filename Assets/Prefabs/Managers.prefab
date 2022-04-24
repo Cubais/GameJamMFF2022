@@ -247,6 +247,8 @@ MonoBehaviour:
   hangarMusicAmbient: {fileID: 8300000, guid: 8db3e4bbf360a084d9beaa591d0e92c8, type: 3}
   labMusicAmbient: {fileID: 8300000, guid: 0934cd13f2bb68c49a31799fc5144f65, type: 3}
   bossMusicAmbient: {fileID: 8300000, guid: e3329c84eb646ea49aea97fc3d54d771, type: 3}
+  menuMusicAmbient: {fileID: 8300000, guid: 218494a1bf7616044841e8c01231aef5, type: 3}
+  BossPrefab: {fileID: 4904604781382029103, guid: 4605e54019e6bc8439802e001bccc5f6, type: 3}
 --- !u!1 &5145218361469355767
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +561,7 @@ MonoBehaviour:
   desertBackgrounds:
   - {fileID: 21300000, guid: e4be778974411d340a3b1e9aae9c1a73, type: 3}
   - {fileID: 21300000, guid: de94da528bd052645aa57bcd3680083f, type: 3}
-  startLevelSprite: {fileID: 21300000, guid: 98eef6f99fcc65a42a3197c30e6b3546, type: 3}
+  startLevelSprite: {fileID: 21300000, guid: 2171bd5cc75324140990b3fec3b486dd, type: 3}
   transitionDesertHangar: {fileID: 21300000, guid: bdc9408b221faec46a3e97213dfb9008, type: 3}
   hangarBackgrounds:
   - {fileID: 21300000, guid: 307d5e13439fcc5418c7198bbfa986c2, type: 3}

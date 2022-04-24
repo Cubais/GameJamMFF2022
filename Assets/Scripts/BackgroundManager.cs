@@ -44,6 +44,9 @@ public class BackgroundManager : Singleton<BackgroundManager>
         
     public void Init(LevelSettings levelSettings)
     {
+        backgroundMemory.Clear();
+        currentBackgroundType = BackgroundType.Desert;
+
         GenerateLevel(levelSettings);
 
         for (int i = 0; i < 3; i++)

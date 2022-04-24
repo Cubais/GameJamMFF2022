@@ -104,16 +104,17 @@ public class BossControler : MonoBehaviour
         if (!isFlashCorutine)
             StartCoroutine(FlashAsynch());
 
-        if (currentHealth <= 750 || currentHealth <= 500 || currentHealth <= 250 || currentHealth <= 100)
+        if ((currentHealth <= 750 && currentHealth >= 730) || (currentHealth <= 500 && currentHealth >= 450) || (currentHealth <= 250 && currentHealth >= 150))
         {
             superAttack = true;
+            superAttackk = true;
             SuperAttack();
         }
         else if (isFlash)
         {
-            FlashAttack();
             isFlash = false;
             flashAttackk = true;
+            FlashAttack();            
         }
         else if (!inAttack)
             Move();
@@ -123,12 +124,12 @@ public class BossControler : MonoBehaviour
     {
         flashAttack = Random.Range(0, 100_000);
 
-        if (flashAttack % 7 == 0)
+        if (flashAttack % 3 == 0)
             isFlash = true;
 
         isFlashCorutine = true;
 
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(10);
 
         isFlashCorutine = false;
     }
@@ -266,7 +267,8 @@ public class BossControler : MonoBehaviour
 
     void FlashAttack()
     {
-        if (inAttack || !isFlash)
+        Debug.LogError("isAttack - " + inAttack + " " + isFlash + " " + flashAttackk);
+        if (inAttack)
             return;
 
         inAttack = true;
@@ -278,10 +280,9 @@ public class BossControler : MonoBehaviour
 
     IEnumerator Flash()
     {
-        yield return null;
+        yield return new WaitForSeconds(0.5f);
         flashAttackk = false;
         yield return new WaitForSeconds(1f);
-        meleeAttack = false;
         Collider2D[] enemies = Physics2D.OverlapCircleAll(deathPoint.position, flashRange, enemiesLayers);
 
         if (enemies.Length > 0)
@@ -289,8 +290,6 @@ public class BossControler : MonoBehaviour
             enemies[0].GetComponent<CharacterControler>().TakeDamage(meleeAttackDamage);
             ScreenManager.instance.SetScreen(ScreenType.Flash, ScreenType.World);
         }
-
-        yield return new WaitForSeconds(1.5f);
     }
 
     void SuperAttack()
@@ -305,10 +304,10 @@ public class BossControler : MonoBehaviour
 
     IEnumerator Super()
     {
-        yield return null;
-        animator.SetBool("SuperAttack", false);
+        yield return new WaitForSeconds(0.5f);
+        superAttackk = false;
         yield return new WaitForSeconds(1f);
-        meleeAttack = false;
+        superAttack = false;
         Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, superRange, enemiesLayers);
 
         if (enemies.Length > 0)
@@ -336,6 +335,7 @@ public class BossControler : MonoBehaviour
         Transform point = deathPoint;
         point.parent = deathPoint.parent.parent;
         Instantiate(deathEffect, point);
+        ScreenManager.instance.SetScreen(ScreenType.Win);
         StartCoroutine(DieAsynch());
     }
 

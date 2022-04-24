@@ -818,7 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5af13ebf0157e449de125bbadeb07b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 3.5
+  maxSpeed: 3
   meleeAttackDamage: 5
   rangeAttackDamage: 5
   meleeDistance: 1.5
@@ -840,6 +840,7 @@ MonoBehaviour:
   meleeAttackLenght: 1
   deathPoint: {fileID: 6591907303279411355}
   deathEffect: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
+  bloodEffect: {fileID: 7265504126344363177, guid: 962f4d9e95ab560488c1fff1bf83f611, type: 3}
 --- !u!114 &3311929418635297104
 MonoBehaviour:
   m_ObjectHideFlags: 0

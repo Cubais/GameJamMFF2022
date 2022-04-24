@@ -16,6 +16,16 @@ public class MenuScreen : ScreenOverlay
 
     public void OnPlay()
     {
-        OnScreenFinished(screenType);
+        OnScreenFinished(screenType);        
+    }
+
+    public void OnQuitApp()
+    {
+        Application.Quit();
+    }
+
+    public void OnControls()
+    {
+        ScreenManager.instance.SetScreen(ScreenType.Controls, ScreenType.Menu);
     }
 }

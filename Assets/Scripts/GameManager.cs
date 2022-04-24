@@ -18,6 +18,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private AudioClip hangarMusicAmbient;
     [SerializeField] private AudioClip labMusicAmbient;
     [SerializeField] private AudioClip bossMusicAmbient;
+    [SerializeField] private AudioClip menuMusicAmbient;
+
+    public GameObject BossPrefab;
 
     public CharacterControler playerCharacter { get; private set; }
     public bool GamePaused => gamePaused;
@@ -78,6 +81,7 @@ public class GameManager : Singleton<GameManager>
                     NPCManager.instance.SwitchLevel(BackgroundType.Hangar);
                     currentAmbientMusic.StopSound(true);
                     currentAmbientMusic = AudioManager.instance.Play(hangarMusicAmbient, true);
+                    playerCharacter.GainHP(false);
 
                     currentScreenEdge += LevelSetup.HangarLevel.Count + 1;                    
                     break;
@@ -90,6 +94,7 @@ public class GameManager : Singleton<GameManager>
                     NPCManager.instance.SwitchLevel(BackgroundType.Lab);
                     currentAmbientMusic.StopSound(true);
                     currentAmbientMusic = AudioManager.instance.Play(labMusicAmbient, true);
+                    playerCharacter.GainHP(false);
 
                     currentScreenEdge += LevelSetup.LabLevel.Count;
                     break;
@@ -101,6 +106,10 @@ public class GameManager : Singleton<GameManager>
 
                     currentAmbientMusic.StopSound(true);
                     currentAmbientMusic = AudioManager.instance.Play(bossMusicAmbient, true);
+                    Instantiate(BossPrefab, playerCharacter.transform.position + transform.right * 5f, Quaternion.identity);
+                    ScreenManager.instance.ShowBossHealth(true);
+                    playerCharacter.GainHP(true);
+
                     currentScreenEdge += 100;
                     break;
                 default:
@@ -114,6 +123,8 @@ public class GameManager : Singleton<GameManager>
         playerCharacter.gameObject.SetActive(true);
         NPCManager.instance.StartGame(LevelSetup);
         inMenu = false;
+        currentAmbientMusic.StopSound(true);
+        currentAmbientMusic = AudioManager.instance.Play(desertMusicAmbient, true);
     }
 
     public void OnContinue()
@@ -133,18 +144,32 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1f;
         ScreenManager.instance.SetScreen(ScreenType.Loading, ScreenType.Menu);
         inMenu = true;
+        NPCManager.instance.DeleteAll();
+        currentAmbientMusic.StopSound(true);
+        currentAmbientMusic = AudioManager.instance.Play(menuMusicAmbient, true);
         ResetGame();
     }
 
     private void ResetGame()
     {
+        Time.timeScale = 1f;
+
         // Reset player
         Destroy(playerCharacter.gameObject);
         playerCharacter = Instantiate(PlayerPrefab, PlayerStartPos.position, Quaternion.identity).GetComponent<CharacterControler>();
         playerCharacter.gameObject.SetActive(false);
 
         CameraMovement.instance.ResetCamera();
+        CameraMovement.instance.SetCameraEdge(0, currentScreenEdge * BackgroundManager.instance.screenWidth);
 
         NPCManager.instance.SpawnMenuNPCs();
+
+        currentScreenEdge = LevelSetup.DesertLevel.Count + 1;
+
+        BackgroundManager.instance.Init(LevelSetup);        
+        currentAmbientMusic = AudioManager.instance.Play(desertMusicAmbient, true);
+
+        playerCharacter.GainHP(true);
+        ScreenManager.instance.ShowBossHealth(false);
     }
 }

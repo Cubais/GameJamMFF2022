@@ -47,6 +47,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
     [Header("Death")]
     public Transform deathPoint;
     public GameObject deathEffect;
+    public GameObject bloodEffect;
 
     private Vector2 movement;
     private Vector2 oldPost;
@@ -72,6 +73,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
         npcType = npcTypeEnum == NPCTypeEnum.Melee ? true : false;
         currentHealth = maxHealth;
         healthSlider.SetMaxSliderValue(currentHealth);
+        maxSpeed = Random.Range(2.5f, 4.5f);
     }
 
     // Update is called once per frame
@@ -300,14 +302,17 @@ public class NPCControler : MonoBehaviour, ICharacterController
         Transform point = deathPoint;
         point.parent = deathPoint.parent.parent;
         Instantiate(deathEffect, point);
+        var blood = Instantiate(bloodEffect, transform.Find("shadow").position, Quaternion.identity);
         NPCManager.instance.NPCDeath(this);
-        StartCoroutine(DieAsynch());
+        StartCoroutine(DieAsynch(blood));
     }
 
-    IEnumerator DieAsynch()
+    IEnumerator DieAsynch(GameObject go)
     {
         gameObject.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
-        Destroy(gameObject);
+        yield return new WaitForSeconds(5f);
+        Destroy(go);
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);        
     }
 }

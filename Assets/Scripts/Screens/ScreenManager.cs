@@ -13,6 +13,7 @@ public enum ScreenType
     Pause,
     Loading,
     World,
+    Controls,
     None
 }
 
@@ -25,8 +26,7 @@ public class ScreenManager : Singleton<ScreenManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-            SetScreen(ScreenType.Loading);
+      
     }
 
     private void ScreenFinished(ScreenType screenType)
@@ -44,8 +44,10 @@ public class ScreenManager : Singleton<ScreenManager>
                 SetScreen(ScreenType.World);
                 break;
             case ScreenType.Win:
+                GameManager.instance.OnBackToMenu();
                 break;
             case ScreenType.Dead:
+                GameManager.instance.OnBackToMenu();
                 break;
             case ScreenType.Pause:
                 break;
@@ -98,5 +100,11 @@ public class ScreenManager : Singleton<ScreenManager>
     {
         var worldScreen = screenUIs[ScreenType.World] as WorldScreen;
         worldScreen.BossHealth.SetSliderValue(currentHealth);        
+    }
+
+    public void ShowBossHealth(bool show)
+    {
+        var worldScreen = screenUIs[ScreenType.World] as WorldScreen;
+        worldScreen.BossUI.SetActive(show);
     }
 }

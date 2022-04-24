@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4461991261649288849}
   - component: {fileID: 2261233136547908352}
   m_Layer: 0
-  m_Name: Shadow2
+  m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -479,7 +479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 2
   meleeAttackDamage: 5
-  rangeAttackDamage: 5
+  rangeAttackDamage: 10
   meleeDistance: 3
   rangeDistance: 2
   rangeRunAmount: 10
@@ -499,6 +499,7 @@ MonoBehaviour:
   meleeAttackLenght: 0
   deathPoint: {fileID: 4948729482259658843}
   deathEffect: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
+  bloodEffect: {fileID: 7265504126344363177, guid: 962f4d9e95ab560488c1fff1bf83f611, type: 3}
 --- !u!114 &7698465439770170116
 MonoBehaviour:
   m_ObjectHideFlags: 0

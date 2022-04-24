@@ -13,23 +13,23 @@ MonoBehaviour:
   m_Name: LevelSettings
   m_EditorClassIdentifier: 
   DesertLevel:
-  - NPCMeleeCount: 0
-    NPCRangeCount: 0
-  - NPCMeleeCount: 0
-    NPCRangeCount: 0
-  - NPCMeleeCount: 0
-    NPCRangeCount: 0
+  - NPCMeleeCount: 1
+    NPCRangeCount: 2
+  - NPCMeleeCount: 5
+    NPCRangeCount: 1
+  - NPCMeleeCount: 2
+    NPCRangeCount: 2
   HangarLevel:
-  - NPCMeleeCount: 1
-    NPCRangeCount: 0
-  - NPCMeleeCount: 0
-    NPCRangeCount: 0
-  - NPCMeleeCount: 0
-    NPCRangeCount: 0
+  - NPCMeleeCount: 5
+    NPCRangeCount: 1
+  - NPCMeleeCount: 2
+    NPCRangeCount: 4
+  - NPCMeleeCount: 3
+    NPCRangeCount: 3
   LabLevel:
-  - NPCMeleeCount: 1
+  - NPCMeleeCount: 8
     NPCRangeCount: 0
-  - NPCMeleeCount: 0
-    NPCRangeCount: 0
+  - NPCMeleeCount: 4
+    NPCRangeCount: 6
   - NPCMeleeCount: 0
     NPCRangeCount: 0

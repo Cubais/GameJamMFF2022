@@ -45,7 +45,13 @@ public class NPCManager : Singleton<NPCManager>
     }
     public void SpawnMenuNPCs()
     {
-        npcCounts.Add(BackgroundType.Desert, 0);
+        menuNPCs.Clear();
+        spawnedNPCs.Clear();
+        if (!npcCounts.ContainsKey(BackgroundType.Desert))
+            npcCounts.Add(BackgroundType.Desert, 0);
+        else
+            npcCounts[BackgroundType.Desert] = 0;
+
         for (int j = 0; j < 2; j++)
         {
             var npc = Instantiate((j == 0) ? desertMelee : desertRange, GetRandomPosOnScreen(0, j == 0), Quaternion.identity).GetComponent<NPCControler>();
@@ -58,9 +64,16 @@ public class NPCManager : Singleton<NPCManager>
     }
     public void GenerateNpcs(LevelSettings levelSettings)
     {
-        var screenIndex = 1;        
-        npcCounts.Add(BackgroundType.Hangar, 0);
-        npcCounts.Add(BackgroundType.Lab, 0);
+        var screenIndex = 1;
+        if (!npcCounts.ContainsKey(BackgroundType.Hangar))
+            npcCounts.Add(BackgroundType.Hangar, 0);
+        else
+            npcCounts[BackgroundType.Hangar] = 0;
+
+        if (!npcCounts.ContainsKey(BackgroundType.Lab))
+            npcCounts.Add(BackgroundType.Lab, 0);
+        else
+            npcCounts[BackgroundType.Lab] = 0;
 
         for (int i = 0; i < levelSettings.DesertLevel.Count; i++)
         {
@@ -149,5 +162,13 @@ public class NPCManager : Singleton<NPCManager>
     {
         npcCounts[currentLevel]--;
         spawnedNPCs.Remove(npc);
+    }
+
+    internal void DeleteAll()
+    {
+        foreach (var item in spawnedNPCs)
+        {
+            Destroy(item.gameObject);
+        }
     }
 }

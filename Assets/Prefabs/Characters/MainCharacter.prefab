@@ -449,9 +449,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5
-  meleeAttackDamage: 40
-  rangeAttackDamage: 5
-  radioAttackDamage: 30
+  meleeAttackDamage: 20
+  rangeAttackDamage: 30
+  radioAttackDamage: 40
   radioCharger: 100
   attackPoint: {fileID: 8280220363597939733}
   attackRange: 0.5
@@ -464,7 +464,6 @@ MonoBehaviour:
   frisbeePrafab: {fileID: 3131399630508739073, guid: a0d87bd4debe60345af394c1f10b4e79, type: 3}
   hasFrisbee: 1
   radioPoint: {fileID: 1400151121564036365}
-  healthSlider: {fileID: 3340461712998671045}
   meleeEffect: {fileID: 100004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
   rangeEffect: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
   radioEffect: {fileID: 1628744458893394, guid: e243632bb3aff9549abdcfcc2ef0c4f0, type: 3}
@@ -1273,14 +1272,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 488342125897791394, guid: 43fc024da8170a84290fafc9519d38fa, type: 3}
   m_PrefabInstance: {fileID: 2488653867736864023}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3340461712998671045 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 924027078323451858, guid: 43fc024da8170a84290fafc9519d38fa, type: 3}
-  m_PrefabInstance: {fileID: 2488653867736864023}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62b94cdbcc5e5654c829a6a2c258d684, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

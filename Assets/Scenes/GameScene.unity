@@ -359,6 +359,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 55319296997945707, guid: c51c133157515be42b1c5e7a4547b22f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2462237767010474204, guid: c51c133157515be42b1c5e7a4547b22f, type: 3}
       propertyPath: m_Camera
       value: 
@@ -447,9 +451,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2739575496576506660, guid: c51c133157515be42b1c5e7a4547b22f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739575496576506660, guid: c51c133157515be42b1c5e7a4547b22f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147610496742355442, guid: c51c133157515be42b1c5e7a4547b22f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147610496742355442, guid: c51c133157515be42b1c5e7a4547b22f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223116752125621091, guid: c51c133157515be42b1c5e7a4547b22f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6987935019844558690, guid: c51c133157515be42b1c5e7a4547b22f, type: 3}
       propertyPath: m_Name
       value: CanvasUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619711252132335057, guid: c51c133157515be42b1c5e7a4547b22f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c51c133157515be42b1c5e7a4547b22f, type: 3}
