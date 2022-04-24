@@ -35,10 +35,8 @@ public class Bullet : MonoBehaviour
 
     private IEnumerator GranadeAsynch(Vector2 groud)
     {
-        Debug.Log(transform.position.y - groud.y);
         while (Mathf.Abs(transform.position.y - groud.y) > 0.05f)
-        {
-            Debug.Log(transform.position.y - groud.y);
+        {           
             transform.position = Vector2.MoveTowards(transform.position, groud, 3 * Time.fixedDeltaTime);
             yield return null;
         }
@@ -72,9 +70,20 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.name);
+        BossControler boss = null;
+        NPCControler npc = null;
 
-        NPCControler npc = collision.GetComponent<NPCControler>();
+        if (collision.tag == "Boss")
+            boss = collision.GetComponent<BossControler>();
+        else
+            npc = collision.GetComponent<NPCControler>();
+
         if (npc != null)
+        {
+            npc.TakeDamage(damage);
+            Instantiate(effect, transform);
+        }
+        else if (boss != null)
         {
             npc.TakeDamage(damage);
             Instantiate(effect, transform);

@@ -20,9 +20,9 @@ public class LoadingScreen : ScreenOverlay
 
         while (Vector2.Distance(loadingObject.position, endPosition.position) > 0.1f)
         {
-            print(Vector2.Distance(loadingObject.position, endPosition.position));
+            //print(Vector2.Distance(loadingObject.position, endPosition.position));
             loadingObject.position += (endPosition.position - startPosition.position).normalized * Time.fixedDeltaTime * Speed;
-            print("AFTER " + Vector2.Distance(loadingObject.position, endPosition.position));
+            //print("AFTER " + Vector2.Distance(loadingObject.position, endPosition.position));
             yield return new WaitForFixedUpdate();
         }
 

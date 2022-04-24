@@ -167,8 +167,12 @@ public class CharacterControler : MonoBehaviour, ICharacterController
             if (enemies.Length > 0)
             {
                 foreach (Collider2D enemy in enemies)
-                {
-                    enemy.GetComponent<NPCControler>().TakeDamage(radioAttackDamage);
+                {              
+                    if(enemy.tag == "Boss")
+                        enemy.GetComponent<BossControler>().TakeDamage(radioAttackDamage);
+                    else
+                        enemy.GetComponent<NPCControler>().TakeDamage(radioAttackDamage);
+
                     Instantiate(radioEffect, radioPoint);
                 }
 
@@ -191,7 +195,11 @@ public class CharacterControler : MonoBehaviour, ICharacterController
         {
             foreach (Collider2D enemy in enemies)
             {
-                enemy.GetComponent<NPCControler>().TakeDamage(damage);
+                if (enemy.transform.tag == "Boss")
+                    enemy.GetComponent<BossControler>().TakeDamage(radioAttackDamage);
+                else
+                    enemy.GetComponent<NPCControler>().TakeDamage(radioAttackDamage);
+
                 StartCoroutine(EffectsAsynch());
                 radioCharger += 5;
             }
