@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterControler : MonoBehaviour, ICharacterController
@@ -33,10 +32,6 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     [Header("Radio Combat")]
     public Transform radioPoint;
 
-    [Header("Health Bar")]
-    public HealthBar healthSlider;
-    public HealthBar radioSlider;
-
     [Header("Attack Effects")]
     public GameObject meleeEffect;
     public GameObject rangeEffect;
@@ -61,9 +56,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        currentHealth = maxHealth;
-        healthSlider.SetMaxSliderValue(currentHealth);
-        radioSlider.SetMaxSliderValue(100);
+        currentHealth = maxHealth;        
     }
 
     void Update()
@@ -179,7 +172,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
                 }
 
                 radioCharger = 0;
-                radioSlider.SetSliderValue(radioCharger);
+                ScreenManager.instance.SetCharacterHealth(currentHealth, radioCharger);                
             }
         }
     }
@@ -203,9 +196,9 @@ public class CharacterControler : MonoBehaviour, ICharacterController
                 else
                     enemy.GetComponent<NPCControler>().TakeDamage(radioAttackDamage);
 
-                StartCoroutine(EffectsAsynch());
-                radioSlider.SetSliderValue(radioCharger);
+                StartCoroutine(EffectsAsynch());                
                 radioCharger += 5;
+                ScreenManager.instance.SetCharacterHealth(currentHealth, radioCharger);
             }
         }
     }
@@ -247,7 +240,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        healthSlider.SetSliderValue(currentHealth);
+        ScreenManager.instance.SetCharacterHealth(currentHealth, radioCharger);        
 
         if (currentHealth <= 0)
         {

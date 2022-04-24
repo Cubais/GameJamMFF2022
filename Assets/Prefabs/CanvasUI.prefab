@@ -54,13 +54,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658376071771167217}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -167,10 +167,10 @@ RectTransform:
   m_Father: {fileID: 385417267375555406}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -285.97, y: 162.79}
-  m_SizeDelta: {x: -802.55, y: -359.56598}
+  m_AnchorMin: {x: 0.12264583, y: 0.92100006}
+  m_AnchorMax: {x: 0.2672291, y: 0.947}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &761582193496707438
 MonoBehaviour:
@@ -500,7 +500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3128476617101998816
 RectTransform:
   m_ObjectHideFlags: 0
@@ -512,7 +512,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1160884652720357586}
   m_Father: {fileID: 385417267375555406}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -959,19 +960,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3798953323779118928}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 309364021476690226}
-  m_Father: {fileID: 385417267375555406}
-  m_RootOrder: 3
+  m_Father: {fileID: 3128476617101998816}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 245.82236, y: 162.79}
-  m_SizeDelta: {x: -719.3052, y: -359.566}
+  m_AnchorMin: {x: 0.6484792, y: 0.92300004}
+  m_AnchorMax: {x: 0.8788334, y: 0.95300007}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1652350631832227839
 MonoBehaviour:
@@ -1101,10 +1102,10 @@ RectTransform:
   m_Father: {fileID: 385417267375555406}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -285.5268, y: 143.54843}
-  m_SizeDelta: {x: -801.6636, y: -364.6628}
+  m_AnchorMin: {x: 0.12264583, y: 0.87700003}
+  m_AnchorMax: {x: 0.2672291, y: 0.8941482}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6969207413005702517
 MonoBehaviour:
@@ -1254,13 +1255,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4433230667258765433}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1367,7 +1368,6 @@ RectTransform:
   - {fileID: 3128476617101998816}
   - {fileID: 4790665446563325834}
   - {fileID: 2617791275895969559}
-  - {fileID: 1160884652720357586}
   m_Father: {fileID: 2484608372417980040}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1427,6 +1427,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenType: 6
+  CharacterHealth: {fileID: 5050612206206903059}
+  RadioHealth: {fileID: 4355288024883507732}
+  BossHealth: {fileID: 6124067137885080512}
 --- !u!1 &6987935019844558690
 GameObject:
   m_ObjectHideFlags: 0
@@ -1625,7 +1628,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23.45
+  m_fontSize: 51.35
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1

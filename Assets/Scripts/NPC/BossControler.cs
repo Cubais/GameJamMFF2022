@@ -18,8 +18,7 @@ public class BossControler : MonoBehaviour
     public float rangeRunAmount = 10f;
 
     [Header("Health")]
-    public int maxHealth = 1000;
-    public HealthBar healthSlider;
+    public int maxHealth = 1000;    
 
     [Header("Combat Anim Wait")]
     public float animAttackWait = 0.5f;
@@ -325,9 +324,7 @@ public class BossControler : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        healthSlider.SetSliderValue(currentHealth);
-        Debug.LogWarning("DAMAGE");
-
+        ScreenManager.instance.SetBossHealth(currentHealth);
         if (currentHealth <= 0)
         {
             Die();

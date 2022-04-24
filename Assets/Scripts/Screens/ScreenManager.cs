@@ -86,4 +86,17 @@ public class ScreenManager : Singleton<ScreenManager>
         screenUIs[currentScreen].gameObject.SetActive(true);
         screenUIs[currentScreen].RunEffect();
     }
+
+    public void SetCharacterHealth(float currentHealth, float radio)
+    {
+        var worldScreen = screenUIs[ScreenType.World] as WorldScreen;
+        worldScreen.CharacterHealth.SetSliderValue(currentHealth);
+        worldScreen.RadioHealth.SetSliderValue(radio);
+    }
+
+    public void SetBossHealth(float currentHealth)
+    {
+        var worldScreen = screenUIs[ScreenType.World] as WorldScreen;
+        worldScreen.BossHealth.SetSliderValue(currentHealth);        
+    }
 }
