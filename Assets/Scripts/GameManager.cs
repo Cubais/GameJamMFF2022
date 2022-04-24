@@ -85,8 +85,11 @@ public class GameManager : Singleton<GameManager>
                     currentScreenEdge += LevelSetup.LabLevel.Count;
                     break;
                 case BackgroundType.Lab:
+                    CameraMovement.instance.SetCameraEdge((currentScreenEdge) * BackgroundManager.instance.screenWidth,
+                                                         (currentScreenEdge) * BackgroundManager.instance.screenWidth);
 
-
+                    BackgroundManager.instance.MoveSideBorders(currentScreenEdge - 1, currentScreenEdge - 1);
+                    currentScreenEdge += 100;
                     break;
                 default:
                     break;
