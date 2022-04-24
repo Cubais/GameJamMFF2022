@@ -361,7 +361,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1172774807275148687
 Transform:
   m_ObjectHideFlags: 0
@@ -402,7 +402,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 20
 --- !u!1 &7040716430139589944
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,7 +429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7040716430139589944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 19.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -554,7 +554,10 @@ MonoBehaviour:
   desertBackgrounds:
   - {fileID: 21300000, guid: e4be778974411d340a3b1e9aae9c1a73, type: 3}
   - {fileID: 21300000, guid: de94da528bd052645aa57bcd3680083f, type: 3}
+  startLevelSprite: {fileID: 21300000, guid: 98eef6f99fcc65a42a3197c30e6b3546, type: 3}
+  transitionDesertHangar: {fileID: 21300000, guid: f9ffc8b35ee1866408c70b562ee8e848, type: 3}
   hangarBackgrounds: []
+  transitionHangarLab: {fileID: 0}
   labBackgrounds: []
   backgroundSprites:
   - {fileID: 2616972668168150757}
@@ -590,7 +593,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9103903132530649106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.2, y: 0, z: 0}
+  m_LocalPosition: {x: 38.4, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -687,7 +690,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9183881234698147164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.2, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public enum BackgroundType
 {
-    Desert
+    Desert,
+    Hangar,
+    Lab
 }
 
 public class BackgroundManager : Singleton<BackgroundManager>
@@ -14,9 +16,12 @@ public class BackgroundManager : Singleton<BackgroundManager>
 
     [Header("Desert Backgrounds")]
     [SerializeField] private List<Sprite> desertBackgrounds;
+    [SerializeField] private Sprite startLevelSprite;
+    [SerializeField] private Sprite transitionDesertHangar;
 
     [Header("Hangar Backgrounds")]
     [SerializeField] private List<Sprite> hangarBackgrounds;
+    [SerializeField] private Sprite transitionHangarLab;
 
     [Header("Lab Backgrounds")]
     [SerializeField] private List<Sprite> labBackgrounds;
@@ -29,18 +34,21 @@ public class BackgroundManager : Singleton<BackgroundManager>
     [SerializeField] BoxCollider2D rightBorder;
     [SerializeField] BoxCollider2D bottomBorder;
     [SerializeField] BoxCollider2D topBorder;
-    
+
+    public float screenWidth => RESOLUTION_WIDTH * backgroundSprites[0].transform.localScale.x;
+    public BackgroundType CurrentLevel => currentBackgroundType;
+
     private List<Sprite> backgroundMemory = new List<Sprite>();
-    private BackgroundType currentBackgroundType;
+    private BackgroundType currentBackgroundType = BackgroundType.Desert;
         
-    public void Init()
-    {        
-        ChangeBackground(BackgroundType.Desert);
+    public void Init(LevelSettings levelSettings)
+    {
+        GenerateLevel(levelSettings);
+
         for (int i = 0; i < 3; i++)
         {
             var spriteXScale = backgroundSprites[i].transform.localScale.x;
-            backgroundSprites[i].transform.position = new Vector2(i * RESOLUTION_WIDTH * spriteXScale, 0.0f);
-            backgroundMemory.Add(backgroundSprites[i].sprite);
+            backgroundSprites[i].transform.position = new Vector2(i * RESOLUTION_WIDTH * spriteXScale, 0.0f);            
         }
     }
 
@@ -50,21 +58,28 @@ public class BackgroundManager : Singleton<BackgroundManager>
         CheckBackgroundShift();
     }
 
-    public void ChangeBackground(BackgroundType type)
+    public void ChangebackgroundType(BackgroundType type)
     {
-        switch (type)
+        currentBackgroundType = type;
+    }
+
+    private void GenerateLevel(LevelSettings levelSettings)
+    {
+        backgroundMemory.Add(startLevelSprite);
+        for (int i = 0; i < levelSettings.DesertCount; i++)
         {
-            case BackgroundType.Desert:
-                for (int i = 0; i < 3; i++)                
-                    backgroundSprites[i].sprite = desertBackgrounds[Random.Range(0, desertBackgrounds.Count)];                                
-                break;
-            default:
-                break;
+            backgroundMemory.Add(desertBackgrounds[Random.Range(0, desertBackgrounds.Count)]);
         }
 
-        currentBackgroundType = type;
+        backgroundMemory.Add(transitionDesertHangar);
+
+        for (int i = 0; i < 3; i++)
+        {
+            backgroundSprites[i].sprite = backgroundMemory[i];
+        }
+
         Rescale();
-        SetupBorders();        
+        SetupBorders();           
     }
 
     private Sprite GetRandomBackgroundSprite(BackgroundType type)
@@ -148,9 +163,9 @@ public class BackgroundManager : Singleton<BackgroundManager>
 
         topBorder.size = new Vector2(width, height / 2f);
         topBorder.transform.position = new Vector2(0f, 2 * topBorder.size.y / 4f);
-
+                
         leftBorder.size = new Vector2(width, height);
-        leftBorder.transform.position = new Vector2(0f, 0f);
+        leftBorder.transform.position = new Vector2(-leftBorder.edgeRadius - 2, leftBorder.edgeRadius);
 
         bottomBorder.size = new Vector2(width, 10f);
         bottomBorder.transform.position = new Vector2(0f, -height / 2f - 4f);

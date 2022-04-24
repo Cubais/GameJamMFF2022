@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
+    [Header("Level settings")]
+    [SerializeField] private LevelSettings LevelSetup;
+
     [Header("Player info")]
     [SerializeField] private GameObject PlayerPrefab;
     [SerializeField] private Transform PlayerStartPos;
@@ -18,15 +21,18 @@ public class GameManager : Singleton<GameManager>
 
     private AudioUnit currentAmbientMusic;
     private bool gamePaused = false;
+    private int currentScreenEdge = 0;
 
     private void Awake()
     {
         playerCharacter = Instantiate(PlayerPrefab, PlayerStartPos.position, Quaternion.identity).GetComponent<CharacterControler>();
         playerCharacter.gameObject.SetActive(false);
 
-        BackgroundManager.instance.Init();
+        currentScreenEdge = LevelSetup.DesertCount + 1;
+        BackgroundManager.instance.Init(LevelSetup);
         AudioManager.instance.Prewarm(5);
-        currentAmbientMusic = AudioManager.instance.Play(desertMusicAmbient, true);        
+        currentAmbientMusic = AudioManager.instance.Play(desertMusicAmbient, true);       
+        
     }
 
     private void Start()
@@ -42,6 +48,32 @@ public class GameManager : Singleton<GameManager>
                 OnContinue();
             else
                 OnPauseGame();
+        }
+
+        CheckLevelPass();        
+    }
+
+    private void CheckLevelPass()
+    {
+        if (playerCharacter.transform.position.x / BackgroundManager.instance.screenWidth > currentScreenEdge)
+        {
+            CameraMovement.instance.SetCameraEdge(currentScreenEdge * BackgroundManager.instance.screenWidth);
+            //MoveBorders();
+            switch (BackgroundManager.instance.CurrentLevel)
+            {
+                case BackgroundType.Desert:
+                    BackgroundManager.instance.ChangebackgroundType(BackgroundType.Hangar);
+                    currentScreenEdge += LevelSetup.HangarCount;
+                    break;
+                case BackgroundType.Hangar:
+                    BackgroundManager.instance.ChangebackgroundType(BackgroundType.Lab);
+                    currentScreenEdge += LevelSetup.LabCount;
+                    break;
+                case BackgroundType.Lab:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
