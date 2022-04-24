@@ -35,6 +35,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
 
     [Header("Health Bar")]
     public HealthBar healthSlider;
+    public HealthBar radioSlider;
 
     [Header("Attack Effects")]
     public GameObject meleeEffect;
@@ -62,6 +63,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         healthSlider.SetMaxSliderValue(currentHealth);
+        radioSlider.SetMaxSliderValue(100);
     }
 
     void Update()
@@ -177,6 +179,7 @@ public class CharacterControler : MonoBehaviour, ICharacterController
                 }
 
                 radioCharger = 0;
+                radioSlider.SetSliderValue(radioCharger);
             }
         }
     }
@@ -195,12 +198,13 @@ public class CharacterControler : MonoBehaviour, ICharacterController
         {
             foreach (Collider2D enemy in enemies)
             {
-                if (enemy.transform.tag == "Boss")
+                if (enemy.gameObject.tag == "Boss")
                     enemy.GetComponent<BossControler>().TakeDamage(radioAttackDamage);
                 else
                     enemy.GetComponent<NPCControler>().TakeDamage(radioAttackDamage);
 
                 StartCoroutine(EffectsAsynch());
+                radioSlider.SetSliderValue(radioCharger);
                 radioCharger += 5;
             }
         }

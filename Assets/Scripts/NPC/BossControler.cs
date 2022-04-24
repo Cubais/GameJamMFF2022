@@ -18,7 +18,7 @@ public class BossControler : MonoBehaviour
     public float rangeRunAmount = 10f;
 
     [Header("Health")]
-    public int maxHealth = 752;
+    public int maxHealth = 1000;
     public HealthBar healthSlider;
 
     [Header("Combat Anim Wait")]
@@ -296,7 +296,7 @@ public class BossControler : MonoBehaviour
 
     void SuperAttack()
     {
-        if (inAttack || !superAttack)
+        if (inAttack)
             return;
 
         inAttack = true;
