@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 2999206427217367676}
   - component: {fileID: 7012161213449079989}
   - component: {fileID: 3005286363807014503}
+  - component: {fileID: 5966852342043868576}
   m_Layer: 7
   m_Name: Reporter
   m_TagString: Untagged
@@ -249,6 +250,18 @@ MonoBehaviour:
   meleeAttackLenght: 1
   deathPoint: {fileID: 2319726339989914080}
   deathEffect: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
+--- !u!114 &5966852342043868576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470960005897501126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3c3110703f28846bed7900db5aae70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5483790168268238210
 GameObject:
   m_ObjectHideFlags: 0

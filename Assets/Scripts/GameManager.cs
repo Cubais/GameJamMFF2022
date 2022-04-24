@@ -21,6 +21,7 @@ public class GameManager : Singleton<GameManager>
 
     private AudioUnit currentAmbientMusic;
     private bool gamePaused = false;
+    private bool inMenu = false;
     private int currentScreenEdge = 0;
 
     private void Awake()
@@ -28,20 +29,25 @@ public class GameManager : Singleton<GameManager>
         playerCharacter = Instantiate(PlayerPrefab, PlayerStartPos.position, Quaternion.identity).GetComponent<CharacterControler>();
         playerCharacter.gameObject.SetActive(false);
 
-        currentScreenEdge = LevelSetup.DesertCount + 1;
+        currentScreenEdge = LevelSetup.DesertLevel.Count + 1;
         BackgroundManager.instance.Init(LevelSetup);
         AudioManager.instance.Prewarm(5);
-        currentAmbientMusic = AudioManager.instance.Play(desertMusicAmbient, true);       
-        
+        currentAmbientMusic = AudioManager.instance.Play(desertMusicAmbient, true);        
     }
 
     private void Start()
     {
+        CameraMovement.instance.SetCameraEdge(0, currentScreenEdge * BackgroundManager.instance.screenWidth);
         ScreenManager.instance.SetScreen(ScreenType.Loading, ScreenType.Menu);
+        NPCManager.instance.SpawnMenuNPCs();
+        inMenu = true;
     }
 
     private void Update()
     {
+        if (inMenu)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (gamePaused)
@@ -50,26 +56,37 @@ public class GameManager : Singleton<GameManager>
                 OnPauseGame();
         }
 
-        CheckLevelPass();        
+        CheckLevelPass(); 
     }
 
     private void CheckLevelPass()
     {
-        if (playerCharacter.transform.position.x / BackgroundManager.instance.screenWidth > currentScreenEdge)
+        if (playerCharacter.transform.position.x / BackgroundManager.instance.screenWidth > currentScreenEdge && NPCManager.instance.LevelNPCCount == 0)
         {
-            CameraMovement.instance.SetCameraEdge(currentScreenEdge * BackgroundManager.instance.screenWidth);
-            //MoveBorders();
+            print("Switch " + BackgroundManager.instance.CurrentLevel);
             switch (BackgroundManager.instance.CurrentLevel)
             {
                 case BackgroundType.Desert:
                     BackgroundManager.instance.ChangebackgroundType(BackgroundType.Hangar);
-                    currentScreenEdge += LevelSetup.HangarCount;
+                    CameraMovement.instance.SetCameraEdge(currentScreenEdge * BackgroundManager.instance.screenWidth, 
+                                                          (currentScreenEdge + LevelSetup.HangarLevel.Count + 1) * BackgroundManager.instance.screenWidth);
+
+                    BackgroundManager.instance.MoveSideBorders(currentScreenEdge - 1, currentScreenEdge + LevelSetup.HangarLevel.Count);
+
+                    currentScreenEdge += LevelSetup.HangarLevel.Count + 1;                    
                     break;
                 case BackgroundType.Hangar:
                     BackgroundManager.instance.ChangebackgroundType(BackgroundType.Lab);
-                    currentScreenEdge += LevelSetup.LabCount;
+                    CameraMovement.instance.SetCameraEdge(currentScreenEdge * BackgroundManager.instance.screenWidth,
+                                                         (currentScreenEdge + LevelSetup.LabLevel.Count) * BackgroundManager.instance.screenWidth);
+
+                    BackgroundManager.instance.MoveSideBorders(currentScreenEdge - 1, currentScreenEdge - 1 + LevelSetup.LabLevel.Count);
+
+                    currentScreenEdge += LevelSetup.LabLevel.Count;
                     break;
                 case BackgroundType.Lab:
+
+
                     break;
                 default:
                     break;
@@ -80,6 +97,8 @@ public class GameManager : Singleton<GameManager>
     public void StartGame()
     {
         playerCharacter.gameObject.SetActive(true);
+        NPCManager.instance.StartGame(LevelSetup);
+        inMenu = false;
     }
 
     public void OnContinue()
@@ -98,6 +117,7 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 1f;
         ScreenManager.instance.SetScreen(ScreenType.Loading, ScreenType.Menu);
+        inMenu = true;
         ResetGame();
     }
 
@@ -109,5 +129,7 @@ public class GameManager : Singleton<GameManager>
         playerCharacter.gameObject.SetActive(false);
 
         CameraMovement.instance.ResetCamera();
+
+        NPCManager.instance.SpawnMenuNPCs();
     }
 }

@@ -860,6 +860,7 @@ GameObject:
   - component: {fileID: 7886862924656467471}
   - component: {fileID: 6184631331954424227}
   - component: {fileID: 1155859009553772357}
+  - component: {fileID: 596230761987406119}
   m_Layer: 7
   m_Name: Alien
   m_TagString: Untagged
@@ -980,6 +981,18 @@ MonoBehaviour:
   meleeAttackLenght: 1
   deathPoint: {fileID: 945302298885713388}
   deathEffect: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
+--- !u!114 &596230761987406119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396376938996371951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3c3110703f28846bed7900db5aae70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4396376939164838221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,6 +1237,10 @@ PrefabInstance:
     - target: {fileID: 1632693268853830950, guid: 43fc024da8170a84290fafc9519d38fa, type: 3}
       propertyPath: m_SizeDelta.y
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1632693268853830950, guid: 43fc024da8170a84290fafc9519d38fa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1890251124983395241, guid: 43fc024da8170a84290fafc9519d38fa, type: 3}
       propertyPath: m_AnchorMax.x

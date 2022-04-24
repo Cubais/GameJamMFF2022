@@ -719,6 +719,7 @@ GameObject:
   - component: {fileID: 7703666418683911379}
   - component: {fileID: 7314234638925222931}
   - component: {fileID: 7582051024603963352}
+  - component: {fileID: 3311929418635297104}
   m_Layer: 7
   m_Name: Soldier
   m_TagString: Untagged
@@ -839,6 +840,18 @@ MonoBehaviour:
   meleeAttackLenght: 1
   deathPoint: {fileID: 6591907303279411355}
   deathEffect: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
+--- !u!114 &3311929418635297104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035802094818079667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3c3110703f28846bed7900db5aae70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6480126935047985607
 GameObject:
   m_ObjectHideFlags: 0

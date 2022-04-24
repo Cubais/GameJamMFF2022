@@ -21,6 +21,7 @@ public class BackgroundManager : Singleton<BackgroundManager>
 
     [Header("Hangar Backgrounds")]
     [SerializeField] private List<Sprite> hangarBackgrounds;
+    [SerializeField] private Sprite firsthangar;
     [SerializeField] private Sprite transitionHangarLab;
 
     [Header("Lab Backgrounds")]
@@ -66,12 +67,25 @@ public class BackgroundManager : Singleton<BackgroundManager>
     private void GenerateLevel(LevelSettings levelSettings)
     {
         backgroundMemory.Add(startLevelSprite);
-        for (int i = 0; i < levelSettings.DesertCount; i++)
+        for (int i = 0; i < levelSettings.DesertLevel.Count; i++)
         {
             backgroundMemory.Add(desertBackgrounds[Random.Range(0, desertBackgrounds.Count)]);
         }
 
         backgroundMemory.Add(transitionDesertHangar);
+        backgroundMemory.Add(firsthangar);
+
+        for (int i = 0; i < levelSettings.HangarLevel.Count - 1; i++)
+        {
+            backgroundMemory.Add(hangarBackgrounds[Random.Range(0, hangarBackgrounds.Count)]);
+        }
+
+        backgroundMemory.Add(transitionHangarLab);
+
+        for (int i = 0; i < levelSettings.LabLevel.Count; i++)
+        {
+            backgroundMemory.Add(labBackgrounds[Random.Range(0, labBackgrounds.Count)]);
+        }
 
         for (int i = 0; i < 3; i++)
         {
@@ -79,7 +93,7 @@ public class BackgroundManager : Singleton<BackgroundManager>
         }
 
         Rescale();
-        SetupBorders();           
+        SetupBorders(levelSettings);    
     }
 
     private Sprite GetRandomBackgroundSprite(BackgroundType type)
@@ -145,19 +159,27 @@ public class BackgroundManager : Singleton<BackgroundManager>
         }
     }
 
+    public void MoveSideBorders(int leftIndex, int rightIndex)
+    {
+        leftBorder.edgeRadius = 0;
+        leftBorder.transform.position = new Vector2(leftIndex * screenWidth, 0f);
+
+        rightBorder.transform.position = new Vector2((rightIndex + 1.75f) * screenWidth, 0f);
+    }
+
     private void MoveBorders()
     {
         var width = RESOLUTION_WIDTH;
         var height = RESOLUTION_HEIGHT;
 
-        topBorder.size = new Vector2(width, height / 2f);
+        topBorder.size = new Vector2(width * 1000, height / 2f);
         topBorder.transform.position = new Vector2(GameManager.instance.playerCharacter.transform.position.x, 2 * topBorder.size.y / 4f);
 
-        bottomBorder.size = new Vector2(width, 10f);
+        bottomBorder.size = new Vector2(width * 1000, 10f);
         bottomBorder.transform.position = new Vector2(GameManager.instance.playerCharacter.transform.position.x, -height / 2f - 4f);
     }
 
-    private void SetupBorders()
+    private void SetupBorders(LevelSettings settings)
     {
         var width = RESOLUTION_WIDTH * backgroundSprites[0].transform.localScale.x;
         var height = RESOLUTION_HEIGHT * backgroundSprites[0].transform.localScale.y;
@@ -172,6 +194,6 @@ public class BackgroundManager : Singleton<BackgroundManager>
         bottomBorder.transform.position = new Vector2(0f, -height / 2f - 4f);
 
         rightBorder.size = new Vector2(10f, height);
-        rightBorder.transform.position = new Vector2(width / 2f + 4f, 0f);
+        rightBorder.transform.position = new Vector2(width * (settings.DesertLevel.Count + 1.75f), 0f);
     }
 }

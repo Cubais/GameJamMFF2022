@@ -62,6 +62,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
     private bool isWalking = false;
     private bool movingRight = false;
     private Rigidbody2D rigidbody;
+    private bool isActive = false;
 
     void Start()
     {
@@ -75,7 +76,11 @@ public class NPCControler : MonoBehaviour, ICharacterController
 
     // Update is called once per frame
     void Update()
-    {
+    {        
+        isActive = Vector2.Distance(GameManager.instance.playerCharacter.transform.position, transform.position) < 20f;
+        if (!isActive)
+            return;
+
         oldPost = transform.position;
         rigidbody.velocity = Vector2.zero;
         UpdateAnimator();
@@ -83,7 +88,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
 
     void FixedUpdate()
     {
-        if (!inAttack)
+        if (!inAttack && isActive)
             Move(npcType);
     }
 
@@ -295,6 +300,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
         Transform point = deathPoint;
         point.parent = deathPoint.parent.parent;
         Instantiate(deathEffect, point);
+        NPCManager.instance.NPCDeath(this);
         StartCoroutine(DieAsynch());
     }
 

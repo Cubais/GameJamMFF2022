@@ -806,6 +806,7 @@ GameObject:
   - component: {fileID: 1413041694410827884}
   - component: {fileID: 952206660398723267}
   - component: {fileID: 4962472641528710952}
+  - component: {fileID: 6415248425834353561}
   m_Layer: 7
   m_Name: SoldierGranade
   m_TagString: Untagged
@@ -925,6 +926,18 @@ MonoBehaviour:
   meleeAttackLenght: 0
   deathPoint: {fileID: 441026177060672329}
   deathEffect: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
+--- !u!114 &6415248425834353561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222522273891168219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3c3110703f28846bed7900db5aae70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6542975636450313182
 GameObject:
   m_ObjectHideFlags: 0

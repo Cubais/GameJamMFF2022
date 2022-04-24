@@ -5,7 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LevelSettings", menuName = "Level/LevelSettings", order = 1)]
 public class LevelSettings : ScriptableObject
 {
-    public int DesertCount = 3;
-    public int HangarCount = 3;
-    public int LabCount = 3;
+    [Header("Level settings")]
+    public List<ScreenNPCInfo> DesertLevel;
+    public List<ScreenNPCInfo> HangarLevel;
+    public List<ScreenNPCInfo> LabLevel;
+}
+
+[System.Serializable]
+public struct ScreenNPCInfo
+{
+    public int NPCMeleeCount;
+    public int NPCRangeCount;
 }

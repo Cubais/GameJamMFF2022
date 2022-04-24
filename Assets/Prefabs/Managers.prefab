@@ -76,6 +76,7 @@ Transform:
   - {fileID: 3384677938692536078}
   - {fileID: 5080293318099161291}
   - {fileID: 1278706690281046868}
+  - {fileID: 3562614397994498209}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -239,6 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7352692a16b77443848bfc3dbe839f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelSetup: {fileID: 11400000, guid: 0647bdc12fd7c544483a6ca4cf62ef4c, type: 2}
   PlayerPrefab: {fileID: 2963024566150082666, guid: 13859def70c272b4ba114d0e46a4d47b, type: 3}
   PlayerStartPos: {fileID: 0}
   desertMusicAmbient: {fileID: 8300000, guid: 476873e0155209d49a10022c5a18dfe7, type: 3}
@@ -303,7 +305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1295284498859012414
 Transform:
   m_ObjectHideFlags: 0
@@ -555,10 +557,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e4be778974411d340a3b1e9aae9c1a73, type: 3}
   - {fileID: 21300000, guid: de94da528bd052645aa57bcd3680083f, type: 3}
   startLevelSprite: {fileID: 21300000, guid: 98eef6f99fcc65a42a3197c30e6b3546, type: 3}
-  transitionDesertHangar: {fileID: 21300000, guid: f9ffc8b35ee1866408c70b562ee8e848, type: 3}
-  hangarBackgrounds: []
-  transitionHangarLab: {fileID: 0}
-  labBackgrounds: []
+  transitionDesertHangar: {fileID: 21300000, guid: bdc9408b221faec46a3e97213dfb9008, type: 3}
+  hangarBackgrounds:
+  - {fileID: 21300000, guid: 307d5e13439fcc5418c7198bbfa986c2, type: 3}
+  - {fileID: 21300000, guid: 13b649992c59b1040a3e8e9bf1cdf1a5, type: 3}
+  firsthangar: {fileID: 21300000, guid: 459b6f9ef0ec1f64abf4e6e5cf08bf55, type: 3}
+  transitionHangarLab: {fileID: 21300000, guid: 0b5860ea71fc46e41b0b4e7fc222d363, type: 3}
+  labBackgrounds:
+  - {fileID: 21300000, guid: 0862d415125b4574e900e6fde64df4a8, type: 3}
+  - {fileID: 21300000, guid: aac5d40c26dd8db43a64660490dc76de, type: 3}
   backgroundSprites:
   - {fileID: 2616972668168150757}
   - {fileID: 5760171531183682174}
@@ -664,6 +671,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2f86347b574574392ffdeecd2807d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &9145498174822510021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3562614397994498209}
+  - component: {fileID: 4961111644464684250}
+  m_Layer: 0
+  m_Name: NPCManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3562614397994498209
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9145498174822510021}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3493880881736862106}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4961111644464684250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9145498174822510021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfdf2e58acc03e045a03727674e53615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desertMelee: {fileID: 4470960005897501126, guid: b53760e1d78c1ee488fcbb545c0b25a2, type: 3}
+  desertRange: {fileID: 3067899381707879307, guid: f0b13e33ceb914c44b95095ccb346d7f, type: 3}
+  hangarMelee: {fileID: 6035802094818079667, guid: e92fc51da98409d42aa177de397d8679, type: 3}
+  hangarRange: {fileID: 6222522273891168219, guid: dbc2e6398f3c5ba49bf0a2b65f1f8460, type: 3}
+  labMelee: {fileID: 4396376938996371951, guid: d4ebfa84cecfc4345ba1f15fa70325c6, type: 3}
+  labRange: {fileID: 4420136543772315250, guid: cbf2f34ea93d01f4b859700708c028bd, type: 3}
+  bossPrefab: {fileID: 0}
 --- !u!1 &9183881234698147164
 GameObject:
   m_ObjectHideFlags: 0

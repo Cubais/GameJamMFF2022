@@ -380,6 +380,7 @@ GameObject:
   - component: {fileID: 5704348470764382307}
   - component: {fileID: 9216509947721951880}
   - component: {fileID: 6750597674293676848}
+  - component: {fileID: 7698465439770170116}
   m_Layer: 7
   m_Name: AlienSentry
   m_TagString: Alien
@@ -498,6 +499,18 @@ MonoBehaviour:
   meleeAttackLenght: 0
   deathPoint: {fileID: 4948729482259658843}
   deathEffect: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
+--- !u!114 &7698465439770170116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4420136543772315250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3c3110703f28846bed7900db5aae70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6568761553216397021
 GameObject:
   m_ObjectHideFlags: 0
