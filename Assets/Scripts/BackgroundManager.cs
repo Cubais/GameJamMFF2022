@@ -134,6 +134,7 @@ public class BackgroundManager : Singleton<BackgroundManager>
         {
             var backgroundLast = backgroundSprites[2];
             var index = Mathf.RoundToInt(backgroundSprites[0].transform.position.x / (RESOLUTION_WIDTH * backgroundSprites[0].transform.localScale.x)) - 1;
+            index = (index < 0) ? 0 : index;
             backgroundLast.sprite = backgroundMemory[index];
 
             backgroundSprites[2] = backgroundSprites[1];

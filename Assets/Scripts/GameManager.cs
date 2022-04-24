@@ -107,5 +107,7 @@ public class GameManager : Singleton<GameManager>
         Destroy(playerCharacter.gameObject);
         playerCharacter = Instantiate(PlayerPrefab, PlayerStartPos.position, Quaternion.identity).GetComponent<CharacterControler>();
         playerCharacter.gameObject.SetActive(false);
+
+        CameraMovement.instance.ResetCamera();
     }
 }

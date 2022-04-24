@@ -17,4 +17,9 @@ public class CameraMovement : Singleton<CameraMovement>
     {
         currentBorderX = edgeXPos;
     }
+
+    public void ResetCamera()
+    {
+        transform.position = new Vector3(0.0f, 0.0f, -80f);
+    }
 }
