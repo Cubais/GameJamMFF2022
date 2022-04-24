@@ -27,6 +27,9 @@ public class NPCControler : MonoBehaviour, ICharacterController
     public int maxHealth = 100;
     public HealthBar healthSlider;
 
+    [Header("Combat Anim Wait")]
+    public float animAttackWait = 0.5f;
+
     [Header("Range Combat")]
     public Transform shootPoint;
     public GameObject firePrefab;
@@ -40,6 +43,10 @@ public class NPCControler : MonoBehaviour, ICharacterController
     [Header("Animations length")]
     [SerializeField] private float rangeAttackLenght;
     [SerializeField] private float meleeAttackLenght;
+
+    [Header("Death")]
+    public Transform deathPoint;
+    public GameObject deathEffect;
 
     private Vector2 movement;
     private Vector2 oldPost;
@@ -166,9 +173,19 @@ public class NPCControler : MonoBehaviour, ICharacterController
         if (enemies.Length > 0)
         {
             enemies[0].GetComponent<CharacterControler>().TakeDamage(damage);
+            yield return StartCoroutine(EffectsAsynch());
         }
 
         yield return new WaitForSeconds(1.5f);
+    }
+
+    IEnumerator EffectsAsynch()
+    {
+        Instantiate(rangeHitEffect, attackPoint);
+
+        yield return new WaitForSeconds(0.3f);
+
+        Instantiate(rangeHitEffect, attackPoint);
     }
 
     void OnDrawGizmosSelected()
@@ -245,7 +262,9 @@ public class NPCControler : MonoBehaviour, ICharacterController
             if (player != null)
             {
                 player.TakeDamage(rangeAttackDamage);
-                ScreenManager.instance.SetScreen(ScreenType.Flash);
+
+                if(transform.tag != "Alien")
+                    ScreenManager.instance.SetScreen(ScreenType.Flash);
 
                 if (rangeHitEffect)
                 {
@@ -273,6 +292,16 @@ public class NPCControler : MonoBehaviour, ICharacterController
 
     public void Die()
     {
-        Debug.Log("DEAD");
+        Transform point = deathPoint;
+        point.parent = deathPoint.parent.parent;
+        Instantiate(deathEffect, point);
+        StartCoroutine(DieAsynch());
+    }
+
+    IEnumerator DieAsynch()
+    {
+        gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
     }
 }

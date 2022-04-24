@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5769658010258229596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 441026177060672329}
+  m_Layer: 0
+  m_Name: DeathPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &441026177060672329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5769658010258229596}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.22, y: 0.37, z: -0.00288661}
+  m_LocalScale: {x: -3.333333, y: 3.333333, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1591067095805655619}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5924006429734503010
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,6 +830,7 @@ Transform:
   - {fileID: 5924006431186546697}
   - {fileID: 912562684273428267}
   - {fileID: 2067961936375773146}
+  - {fileID: 441026177060672329}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -880,6 +912,7 @@ MonoBehaviour:
   npcTypeEnum: 1
   maxHealth: 100
   healthSlider: {fileID: 1632235201948317610}
+  animAttackWait: 0.5
   shootPoint: {fileID: 912562684273428267}
   firePrefab: {fileID: 7960252024751611126, guid: 193f7a523a6e11646a5700292ea135b5, type: 3}
   rangeHitEffect: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
@@ -890,6 +923,8 @@ MonoBehaviour:
     m_Bits: 64
   rangeAttackLenght: 0.8
   meleeAttackLenght: 0
+  deathPoint: {fileID: 441026177060672329}
+  deathEffect: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
 --- !u!1 &6542975636450313182
 GameObject:
   m_ObjectHideFlags: 0

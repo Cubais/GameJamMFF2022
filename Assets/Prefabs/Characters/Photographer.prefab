@@ -377,6 +377,7 @@ Transform:
   - {fileID: 5365584379737657415}
   - {fileID: 270443337222814301}
   - {fileID: 3775711266806703}
+  - {fileID: 233295810370504889}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -458,6 +459,7 @@ MonoBehaviour:
   npcTypeEnum: 1
   maxHealth: 100
   healthSlider: {fileID: 727706089950649311}
+  animAttackWait: 0.5
   shootPoint: {fileID: 270443337222814301}
   firePrefab: {fileID: 0}
   rangeHitEffect: {fileID: 0}
@@ -468,6 +470,8 @@ MonoBehaviour:
     m_Bits: 64
   rangeAttackLenght: 2.05
   meleeAttackLenght: 1
+  deathPoint: {fileID: 233295810370504889}
+  deathEffect: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
 --- !u!58 &5399165561988755217
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1108,6 +1112,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3067899381707879306}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6269998917325117076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 233295810370504889}
+  m_Layer: 0
+  m_Name: DeathPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &233295810370504889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6269998917325117076}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.58, y: 0.22, z: -0.026274234}
+  m_LocalScale: {x: -3.333333, y: 3.333333, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3067899381707879306}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8475158997241539560
 GameObject:

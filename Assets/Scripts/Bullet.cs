@@ -15,6 +15,13 @@ public class Bullet : MonoBehaviour
         rigidbody.velocity = direction * speed;
     }
 
+    public void Throw(Vector2 direction, GameObject throwEffect)
+    {
+        rigidbody = GetComponent<Rigidbody2D>();
+        rigidbody.velocity = direction * speed;
+        effect = throwEffect;
+    }
+
     public Vector2 Granade(Vector2 direction, GameObject fireEffect, Vector2 playerPosition)
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -70,6 +77,7 @@ public class Bullet : MonoBehaviour
         if (npc != null)
         {
             npc.TakeDamage(damage);
+            Instantiate(effect, transform);
         }
 
         CharacterControler player = collision.GetComponent<CharacterControler>();

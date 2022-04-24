@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - FxTemporaire
+  - Alien
   layers:
   - Default
   - TransparentFX
@@ -49,6 +51,9 @@ TagManager:
     locked: 0
   - name: Characters
     uniqueID: 4111618379
+    locked: 0
+  - name: Effects
+    uniqueID: 1813562511
     locked: 0
   - name: UI
     uniqueID: 2179842945

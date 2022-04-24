@@ -84,6 +84,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &752804331637638745
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4948729482259658843}
+  m_Layer: 7
+  m_Name: DeathPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4948729482259658843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752804331637638745}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7732368016988388847}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1118755596211666319
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +382,7 @@ GameObject:
   - component: {fileID: 6750597674293676848}
   m_Layer: 7
   m_Name: AlienSentry
-  m_TagString: Untagged
+  m_TagString: Alien
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -372,6 +403,7 @@ Transform:
   - {fileID: 4461991261649288849}
   - {fileID: 8964004636018751063}
   - {fileID: 5598871902349511621}
+  - {fileID: 4948729482259658843}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -453,9 +485,10 @@ MonoBehaviour:
   npcTypeEnum: 1
   maxHealth: 100
   healthSlider: {fileID: 5163110327701064629}
+  animAttackWait: 0.5
   shootPoint: {fileID: 8964004636018751063}
   firePrefab: {fileID: 0}
-  rangeHitEffect: {fileID: 0}
+  rangeHitEffect: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3, type: 3}
   attackPoint: {fileID: 0}
   attackRange: 0.5
   enemiesLayers:
@@ -463,6 +496,8 @@ MonoBehaviour:
     m_Bits: 0
   rangeAttackLenght: 1
   meleeAttackLenght: 0
+  deathPoint: {fileID: 4948729482259658843}
+  deathEffect: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
 --- !u!1 &6568761553216397021
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,7 +694,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9019352164926405339}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.27, y: 1.7, z: 0.09612243}
+  m_LocalPosition: {x: 1.51, y: 1.7, z: 0.09612243}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

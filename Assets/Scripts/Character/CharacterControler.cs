@@ -13,10 +13,13 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     public float maxSpeed = 5f;
     public float meleeAttackDamage = 40f;
     public float rangeAttackDamage = 5f;
+    public float radioAttackDamage = 30f;
+    public float radioCharger = 100f;
 
     [Header("Melee Combat")]
     public Transform attackPoint;
     public float attackRange = 0.5f;
+    public float radioRange = 0.5f;
     public LayerMask enemiesLayers;
 
     [Header("Health")]
@@ -27,8 +30,20 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     public GameObject frisbeePrafab;
     public bool hasFrisbee = true;
 
+    [Header("Radio Combat")]
+    public Transform radioPoint;
+
     [Header("Health Bar")]
     public HealthBar healthSlider;
+
+    [Header("Attack Effects")]
+    public GameObject meleeEffect;
+    public GameObject rangeEffect;
+    public GameObject radioEffect;
+
+    [Header("Death")]
+    public Transform deathPoint;
+    public GameObject deathEffect;
 
     private Vector2 movement;
     private bool rangeAttack = false;
@@ -76,8 +91,9 @@ public class CharacterControler : MonoBehaviour, ICharacterController
         if (meleeAttack)
             MeleeAttack(meleeAttackDamage);
 
-        if (radioAttack && !inAttack)
-        {            
+        if (radioAttack && !inAttack && radioCharger > 99)
+        {
+            RadioAttack();
             StartCoroutine(PerformRadioAttackAsync(RADIO_ANIM_LENGHT));
         }
 
@@ -133,7 +149,8 @@ public class CharacterControler : MonoBehaviour, ICharacterController
 
         animator.SetBool("RangeAttack", false);
         var bullet = Instantiate(frisbeePrafab, shootPoint.position, shootPoint.rotation).GetComponent<Bullet>();
-        bullet.Shoot((transform.localScale.x < 0) ? transform.right : -transform.right);
+        bullet.Throw((transform.localScale.x < 0) ? transform.right : -transform.right, rangeEffect);
+
     }
 
     public void Move(bool follow)
@@ -142,8 +159,22 @@ public class CharacterControler : MonoBehaviour, ICharacterController
     }
 
     public void RadioAttack()
-    {   
-        
+    {
+        if (radioCharger >= 100)
+        {
+            Collider2D[] enemies = Physics2D.OverlapCircleAll(radioPoint.position, radioRange, enemiesLayers);
+
+            if (enemies.Length > 0)
+            {
+                foreach (Collider2D enemy in enemies)
+                {
+                    enemy.GetComponent<NPCControler>().TakeDamage(radioAttackDamage);
+                    Instantiate(radioEffect, radioPoint);
+                }
+
+                radioCharger = 0;
+            }
+        }
     }
 
     public void MeleeAttack(float damage)
@@ -161,8 +192,19 @@ public class CharacterControler : MonoBehaviour, ICharacterController
             foreach (Collider2D enemy in enemies)
             {
                 enemy.GetComponent<NPCControler>().TakeDamage(damage);
+                StartCoroutine(EffectsAsynch());
+                radioCharger += 5;
             }
         }
+    }
+
+    IEnumerator EffectsAsynch()
+    {
+        Instantiate(meleeEffect, attackPoint);
+
+        yield return new WaitForSeconds(0.3f);
+
+        Instantiate(meleeEffect, attackPoint);
     }
 
     void OnDrawGizmosSelected()
@@ -188,7 +230,6 @@ public class CharacterControler : MonoBehaviour, ICharacterController
 
         inAttack = true;
         StartCoroutine(ResetIsInAttackAsync(RADIO_ANIM_LENGHT));
-        throw new System.NotImplementedException();
     }
 
     public void TakeDamage(float damage)
@@ -204,6 +245,16 @@ public class CharacterControler : MonoBehaviour, ICharacterController
 
     public void Die()
     {
-        Debug.Log("PLAYER DEAD");
+        Transform point = deathPoint;
+        point.parent = deathPoint.parent.parent;
+        Instantiate(deathEffect, point);
+        StartCoroutine(DieAsynch());
+    }
+
+    IEnumerator DieAsynch()
+    {
+        gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
     }
 }

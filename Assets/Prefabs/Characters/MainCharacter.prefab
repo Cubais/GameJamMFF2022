@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &748626359257450692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2305648919184227896}
+  m_Layer: 0
+  m_Name: DeathPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2305648919184227896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748626359257450692}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.38, y: -4.29, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2386007480564654049}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1314669255987415838
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +61,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2386007480564654049}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1977353561783650781
 SpriteRenderer:
@@ -115,7 +146,7 @@ Transform:
   m_Children:
   - {fileID: 7332143772138025642}
   m_Father: {fileID: 2386007480564654049}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5771660104904709701
 SpriteRenderer:
@@ -169,6 +200,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2052715450143990602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1400151121564036365}
+  m_Layer: 6
+  m_Name: RadioPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1400151121564036365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052715450143990602}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.97, y: -2.83, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2386007480564654049}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2955436599582299719
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +263,7 @@ Transform:
   - {fileID: 2492750928200647089}
   - {fileID: 7172090492862067501}
   m_Father: {fileID: 2386007480564654049}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2047393751777118369
 SpriteRenderer:
@@ -289,6 +351,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8280220363597939733}
+  - {fileID: 1400151121564036365}
+  - {fileID: 2305648919184227896}
   - {fileID: 6986099594543817934}
   - {fileID: 430233001546411499}
   - {fileID: 6437635161563493435}
@@ -386,8 +450,11 @@ MonoBehaviour:
   maxSpeed: 5
   meleeAttackDamage: 40
   rangeAttackDamage: 5
+  radioAttackDamage: 30
+  radioCharger: 100
   attackPoint: {fileID: 8280220363597939733}
   attackRange: 0.5
+  radioRange: 20
   enemiesLayers:
     serializedVersion: 2
     m_Bits: 128
@@ -395,7 +462,13 @@ MonoBehaviour:
   shootPoint: {fileID: 6986099594543817934}
   frisbeePrafab: {fileID: 3131399630508739073, guid: a0d87bd4debe60345af394c1f10b4e79, type: 3}
   hasFrisbee: 1
+  radioPoint: {fileID: 1400151121564036365}
   healthSlider: {fileID: 3340461712998671045}
+  meleeEffect: {fileID: 100004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
+  rangeEffect: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
+  radioEffect: {fileID: 1628744458893394, guid: e243632bb3aff9549abdcfcc2ef0c4f0, type: 3}
+  deathPoint: {fileID: 2305648919184227896}
+  deathEffect: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
 --- !u!1 &3405934382935019998
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +585,7 @@ Transform:
   m_Children:
   - {fileID: 3606087497662263022}
   m_Father: {fileID: 2386007480564654049}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2178096949368424807
 SpriteRenderer:
@@ -878,7 +951,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2386007480564654049}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7555905751411204928
 GameObject:
@@ -1066,7 +1139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 488342125897791394, guid: 43fc024da8170a84290fafc9519d38fa, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 488342125897791394, guid: 43fc024da8170a84290fafc9519d38fa, type: 3}
       propertyPath: m_AnchorMax.x
