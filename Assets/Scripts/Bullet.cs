@@ -85,7 +85,7 @@ public class Bullet : MonoBehaviour
         }
         else if (boss != null)
         {
-            npc.TakeDamage(damage);
+            boss.TakeDamage(damage);
             Instantiate(effect, transform);
         }
 
