@@ -1,0 +1,89 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public enum ScreenType
+{
+    Flash,
+    Menu,
+    Win,
+    Dead,
+    Pause,
+    Loading,
+    World,
+    None
+}
+
+public class ScreenManager : Singleton<ScreenManager>
+{
+    Dictionary<ScreenType, ScreenOverlay> screenUIs = new Dictionary<ScreenType, ScreenOverlay>();
+
+    private ScreenType activeScreen;
+    private ScreenType nextScreen;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+            SetScreen(ScreenType.Loading);
+    }
+
+    private void ScreenFinished(ScreenType screenType)
+    {
+        CloseAllScreens();
+        if (nextScreen != ScreenType.None)
+            SetScreen(nextScreen);
+        else
+            activeScreen = ScreenType.None;
+
+        switch (screenType)
+        {            
+            case ScreenType.Menu:
+                GameManager.instance.StartGame();
+                SetScreen(ScreenType.World);
+                break;
+            case ScreenType.Win:
+                break;
+            case ScreenType.Dead:
+                break;
+            case ScreenType.Pause:
+                break;
+            case ScreenType.Loading:
+                break;
+            case ScreenType.None:
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void CloseAllScreens()
+    {
+        foreach (var screen in screenUIs.Values)
+        {
+            screen.gameObject.SetActive(false);
+        }
+    }
+
+    public void RegisterScreen(ScreenType screenType, ScreenOverlay screen)
+    {
+        if (!screenUIs.ContainsKey(screenType))
+        {
+            screenUIs.Add(screenType, screen);
+            screen.OnScreenFinished += ScreenFinished;            
+        }
+    }    
+
+    public void SetScreen(ScreenType currentScreen, ScreenType nextScreen = ScreenType.None)
+    {
+        if (activeScreen != ScreenType.None)
+            screenUIs[activeScreen].gameObject.SetActive(false);
+
+        this.nextScreen = nextScreen;
+        activeScreen = currentScreen;
+
+        screenUIs[currentScreen].gameObject.SetActive(true);
+        screenUIs[currentScreen].RunEffect();
+    }
+}

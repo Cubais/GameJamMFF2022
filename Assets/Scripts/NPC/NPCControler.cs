@@ -245,7 +245,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
             if (player != null)
             {
                 player.TakeDamage(rangeAttackDamage);
-                ScreenManager.instance.FlashScreen();
+                ScreenManager.instance.SetScreen(ScreenType.Flash);
 
                 if (rangeHitEffect)
                 {

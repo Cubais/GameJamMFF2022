@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1278706690281046868}
-  - component: {fileID: 62748511890601434}
+  - component: {fileID: 2728913506851300794}
   m_Layer: 0
   m_Name: ScreenManager
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 3493880881736862106}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &62748511890601434
+--- !u!114 &2728913506851300794
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 45218421358794994}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e220370f360d5b439572e3c9c7840fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f9d75f54f7d83f4194ce674366528e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1157965108526785282
@@ -564,7 +564,6 @@ MonoBehaviour:
   rightBorder: {fileID: 4555021575495555063}
   bottomBorder: {fileID: 981771076334761748}
   topBorder: {fileID: 1364957096082666157}
-  CanMoveBackground: 0
 --- !u!1 &9103903132530649106
 GameObject:
   m_ObjectHideFlags: 0
