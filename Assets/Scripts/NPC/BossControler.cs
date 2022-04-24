@@ -288,7 +288,7 @@ public class BossControler : MonoBehaviour
         if (enemies.Length > 0)
         {
             enemies[0].GetComponent<CharacterControler>().TakeDamage(meleeAttackDamage);
-            ScreenManager.instance.SetScreen(ScreenType.Flash);
+            ScreenManager.instance.SetScreen(ScreenType.Flash, ScreenType.World);
         }
 
         yield return new WaitForSeconds(1.5f);

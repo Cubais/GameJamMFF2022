@@ -20,14 +20,14 @@ MonoBehaviour:
   - NPCMeleeCount: 0
     NPCRangeCount: 0
   HangarLevel:
-  - NPCMeleeCount: 0
+  - NPCMeleeCount: 1
     NPCRangeCount: 0
   - NPCMeleeCount: 0
     NPCRangeCount: 0
   - NPCMeleeCount: 0
     NPCRangeCount: 0
   LabLevel:
-  - NPCMeleeCount: 0
+  - NPCMeleeCount: 1
     NPCRangeCount: 0
   - NPCMeleeCount: 0
     NPCRangeCount: 0

@@ -19,10 +19,10 @@ public class NPCManager : Singleton<NPCManager>
     [Header("Boss")]
     [SerializeField] private GameObject bossPrefab;
 
-    public int LevelNPCCount => spawnedNPCs.Count;
-
     private HashSet<NPCControler> spawnedNPCs = new HashSet<NPCControler>();
     private List<NPCControler> menuNPCs = new List<NPCControler>();
+    private Dictionary<BackgroundType, int> npcCounts = new Dictionary<BackgroundType, int>();
+    private BackgroundType currentLevel = BackgroundType.Desert;
 
     public void StartGame(LevelSettings settings)
     {
@@ -34,45 +34,91 @@ public class NPCManager : Singleton<NPCManager>
 
         GenerateNpcs(settings);
     }
+
+    public void SwitchLevel(BackgroundType newLevel)
+    {
+        currentLevel = newLevel;
+    }
+    public bool AllNPCKilled(BackgroundType level)
+    {
+        return npcCounts[level] == 0;
+    }
     public void SpawnMenuNPCs()
     {
+        npcCounts.Add(BackgroundType.Desert, 0);
         for (int j = 0; j < 2; j++)
         {
             var npc = Instantiate((j == 0) ? desertMelee : desertRange, GetRandomPosOnScreen(0, j == 0), Quaternion.identity).GetComponent<NPCControler>();
             npc.enabled = false;
             npc.gameObject.AddComponent<MenuNPC>();
             menuNPCs.Add(npc);
+            npcCounts[BackgroundType.Desert]++;
             spawnedNPCs.Add(npc);
         }
     }
     public void GenerateNpcs(LevelSettings levelSettings)
     {
-        var screenIndex = 1;
+        var screenIndex = 1;        
+        npcCounts.Add(BackgroundType.Hangar, 0);
+        npcCounts.Add(BackgroundType.Lab, 0);
+
         for (int i = 0; i < levelSettings.DesertLevel.Count; i++)
         {
             for (int j = 0; j < levelSettings.DesertLevel[i].NPCMeleeCount; j++)
             {
                 var npc = Instantiate(desertMelee, GetRandomPosOnScreen(screenIndex, true), Quaternion.identity);
                 spawnedNPCs.Add(npc.GetComponent<NPCControler>());
+                npcCounts[BackgroundType.Desert]++;
             }
 
             for (int j = 0; j < levelSettings.DesertLevel[i].NPCRangeCount; j++)
             {   
                 var npc = Instantiate(desertRange, GetRandomPosOnScreen(screenIndex, false), Quaternion.identity);
                 spawnedNPCs.Add(npc.GetComponent<NPCControler>());
+                npcCounts[BackgroundType.Desert]++;
             }
 
             screenIndex++;
         }
 
-        for (int i = 0; i < levelSettings.DesertLevel.Count; i++)
+        screenIndex++;
+
+        for (int i = 0; i < levelSettings.HangarLevel.Count; i++)
         {
+            for (int j = 0; j < levelSettings.HangarLevel[i].NPCMeleeCount; j++)
+            {
+                var npc = Instantiate(hangarMelee, GetRandomPosOnScreen(screenIndex, true), Quaternion.identity);
+                spawnedNPCs.Add(npc.GetComponent<NPCControler>());
+                npcCounts[BackgroundType.Hangar]++;
+            }
+
+            for (int j = 0; j < levelSettings.HangarLevel[i].NPCRangeCount; j++)
+            {
+                var npc = Instantiate(hangarRange, GetRandomPosOnScreen(screenIndex, false), Quaternion.identity);
+                spawnedNPCs.Add(npc.GetComponent<NPCControler>());
+                npcCounts[BackgroundType.Hangar]++;
+            }
 
             screenIndex++;
         }
 
-        for (int i = 0; i < levelSettings.DesertLevel.Count; i++)
+        screenIndex++;
+
+        for (int i = 0; i < levelSettings.LabLevel.Count - 1; i++)
         {
+            for (int j = 0; j < levelSettings.LabLevel[i].NPCMeleeCount; j++)
+            {
+                var npc = Instantiate(labMelee, GetRandomPosOnScreen(screenIndex, true), Quaternion.identity);
+                spawnedNPCs.Add(npc.GetComponent<NPCControler>());
+                npcCounts[BackgroundType.Lab]++;
+            }
+
+            for (int j = 0; j < levelSettings.LabLevel[i].NPCRangeCount; j++)
+            {
+                var npc = Instantiate(labRange, GetRandomPosOnScreen(screenIndex, false), Quaternion.identity);
+                spawnedNPCs.Add(npc.GetComponent<NPCControler>());
+                npcCounts[BackgroundType.Lab]++;
+            }
 
             screenIndex++;
         }
@@ -97,12 +143,11 @@ public class NPCManager : Singleton<NPCManager>
         }
 
         return position;
-    }
-
-    
+    }    
 
     public void NPCDeath(NPCControler npc)
     {
+        npcCounts[currentLevel]--;
         spawnedNPCs.Remove(npc);
     }
 }

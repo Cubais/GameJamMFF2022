@@ -88,6 +88,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         audioUnit.Init();
         audioUnit.OnSoundFinished -= ReturnToPool;
+        audioUnit.StopSound();
         freeAudioUnits.Push(audioUnit);
     }
 

@@ -15,7 +15,10 @@ public class GameManager : Singleton<GameManager>
 
     [Header("Ambient sounds")]
     [SerializeField] private AudioClip desertMusicAmbient;
-    
+    [SerializeField] private AudioClip hangarMusicAmbient;
+    [SerializeField] private AudioClip labMusicAmbient;
+    [SerializeField] private AudioClip bossMusicAmbient;
+
     public CharacterControler playerCharacter { get; private set; }
     public bool GamePaused => gamePaused;
 
@@ -61,7 +64,7 @@ public class GameManager : Singleton<GameManager>
 
     private void CheckLevelPass()
     {
-        if (playerCharacter.transform.position.x / BackgroundManager.instance.screenWidth > currentScreenEdge && NPCManager.instance.LevelNPCCount == 0)
+        if (playerCharacter.transform.position.x / BackgroundManager.instance.screenWidth > currentScreenEdge && NPCManager.instance.AllNPCKilled(BackgroundManager.instance.CurrentLevel))
         {
             print("Switch " + BackgroundManager.instance.CurrentLevel);
             switch (BackgroundManager.instance.CurrentLevel)
@@ -72,6 +75,9 @@ public class GameManager : Singleton<GameManager>
                                                           (currentScreenEdge + LevelSetup.HangarLevel.Count + 1) * BackgroundManager.instance.screenWidth);
 
                     BackgroundManager.instance.MoveSideBorders(currentScreenEdge - 1, currentScreenEdge + LevelSetup.HangarLevel.Count);
+                    NPCManager.instance.SwitchLevel(BackgroundType.Hangar);
+                    currentAmbientMusic.StopSound(true);
+                    currentAmbientMusic = AudioManager.instance.Play(hangarMusicAmbient, true);
 
                     currentScreenEdge += LevelSetup.HangarLevel.Count + 1;                    
                     break;
@@ -81,6 +87,9 @@ public class GameManager : Singleton<GameManager>
                                                          (currentScreenEdge + LevelSetup.LabLevel.Count) * BackgroundManager.instance.screenWidth);
 
                     BackgroundManager.instance.MoveSideBorders(currentScreenEdge - 1, currentScreenEdge - 1 + LevelSetup.LabLevel.Count);
+                    NPCManager.instance.SwitchLevel(BackgroundType.Lab);
+                    currentAmbientMusic.StopSound(true);
+                    currentAmbientMusic = AudioManager.instance.Play(labMusicAmbient, true);
 
                     currentScreenEdge += LevelSetup.LabLevel.Count;
                     break;
@@ -89,6 +98,9 @@ public class GameManager : Singleton<GameManager>
                                                          (currentScreenEdge) * BackgroundManager.instance.screenWidth);
 
                     BackgroundManager.instance.MoveSideBorders(currentScreenEdge - 1, currentScreenEdge - 1);
+
+                    currentAmbientMusic.StopSound(true);
+                    currentAmbientMusic = AudioManager.instance.Play(bossMusicAmbient, true);
                     currentScreenEdge += 100;
                     break;
                 default:

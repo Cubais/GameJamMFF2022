@@ -269,7 +269,7 @@ public class NPCControler : MonoBehaviour, ICharacterController
                 player.TakeDamage(rangeAttackDamage);
 
                 if(transform.tag != "Alien")
-                    ScreenManager.instance.SetScreen(ScreenType.Flash);
+                    ScreenManager.instance.SetScreen(ScreenType.Flash, ScreenType.World);
 
                 if (rangeHitEffect)
                 {

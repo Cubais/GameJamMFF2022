@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,6 +40,24 @@ public class AudioUnit : MonoBehaviour
     private IEnumerator ReturnAfterFinishAsync(float clipLength)
     {
         yield return new WaitForSeconds(clipLength);
+
+        OnSoundFinished(this);
+    }
+
+    public void StopSound(bool fadeOut = false)
+    {
+        if (fadeOut)
+            StartCoroutine(FadeOutSound());
+        else
+            source.Stop();
+    }
+    private IEnumerator FadeOutSound()
+    {
+        while(source.volume > 0.0f)
+        {
+            source.volume -= 0.001f;
+            yield return null;
+        }
 
         OnSoundFinished(this);
     }

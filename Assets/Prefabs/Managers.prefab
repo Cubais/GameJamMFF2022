@@ -244,6 +244,9 @@ MonoBehaviour:
   PlayerPrefab: {fileID: 2963024566150082666, guid: 13859def70c272b4ba114d0e46a4d47b, type: 3}
   PlayerStartPos: {fileID: 0}
   desertMusicAmbient: {fileID: 8300000, guid: 476873e0155209d49a10022c5a18dfe7, type: 3}
+  hangarMusicAmbient: {fileID: 8300000, guid: 8db3e4bbf360a084d9beaa591d0e92c8, type: 3}
+  labMusicAmbient: {fileID: 8300000, guid: 0934cd13f2bb68c49a31799fc5144f65, type: 3}
+  bossMusicAmbient: {fileID: 8300000, guid: e3329c84eb646ea49aea97fc3d54d771, type: 3}
 --- !u!1 &5145218361469355767
 GameObject:
   m_ObjectHideFlags: 0
